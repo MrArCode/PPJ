@@ -24,15 +24,6 @@ public class Main {
 //        GameMethods.choiceMenu(hero,ork);
 
 
-
-
-        //Lubie jeść pierogi
-
-
-
-
-
-
 //        try {
 //            musicThread.join();
 //        } catch (InterruptedException e) {
