@@ -1,6 +1,6 @@
 package LOTR;
 
-import static LOTR.Character.createHero;
+import static LOTR.Character.createCharacter;
 import static LOTR.Monster.MonsterFactory.createOrk;
 
 public class Main {
@@ -18,9 +18,10 @@ public class Main {
 
 
         GameMethods.StartMenuShow(); //Menu początkowe
-        Character hero = createHero(); //Tworzy bohatera, na razie na podstawowe sprawy
+        Character hero = createCharacter(); //Tworzy bohatera, na razie na podstawowe sprawy
+        hero.showStats();
         Monster ork = createOrk(); //Tu kiedyś bedzie tablica potwórów albo przynajmniej jakaś pula
-        GameMethods.choiceMenu(hero,ork);
+//        GameMethods.choiceMenu(hero,ork);
 
 
 
