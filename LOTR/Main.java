@@ -16,7 +16,7 @@ public class Main {
 //        musicThread.start();
 
 
-
+        System.out.println("Tymon");
         GameMethods.StartMenuShow(); //Menu początkowe
         Character hero = createHero(); //Tworzy bohatera, na razie na podstawowe sprawy
         Monster ork = createOrk(); //Tu kiedyś bedzie tablica potwórów albo przynajmniej jakaś pula
