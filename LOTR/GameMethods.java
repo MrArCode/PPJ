@@ -37,60 +37,60 @@ public class GameMethods {
 
 
 
-    public static void choiceMenu(Character hero, Monster ork){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("""
-                1. Walcz
-                2. Uciekaj""");
-
-        int choice = scanner.nextInt();
-        boolean pętla = true;
-
-        do {
-            if(choice == 1){
-                walka(hero,ork);
-                pętla = false;
-            }else {
-                System.out.println("Koniec gry");
-                pętla = false;
-            }
-
-        } while (pętla);
-    }
-
-    public static void walka(Character hero, Monster ork) {
-        System.out.println("---------------------------------------------------");
-        System.out.println("Początek walki:");
-        hero.showStats();
-        ork.showStats();
-
-        while (ork.getHp() > 0 && hero.getHp() > 0) {
-            // Atak gracza na potwora
-            ork.setHp(ork.getHp() - hero.getEquipment()[0].getDmg());
-
-            // Odpowiedź potwora na atak gracza
-            hero.setHp(hero.getHp() - ork.getAttack());
-
-            // Wyświetlenie stanu po rundzie
-            System.out.println("Po rundzie:");
-            hero.showStats();
-            ork.showStats();
-
-            // Opóźnienie między rundami
-            try {
-                Thread.sleep(2000); // Opóźnienie 1 sekundy (1000 milisekund)
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Sprawdzenie wyniku walki
-        if (hero.getHp() <= 0) {
-            System.out.println("Przegrałeś");
-        } else {
-            System.out.println("Wygrałeś");
-        }
-    }
+//    public static void choiceMenu(Character hero, Monster ork){
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("""
+//                1. Walcz
+//                2. Uciekaj""");
+//
+//        int choice = scanner.nextInt();
+//        boolean pętla = true;
+//
+//        do {
+//            if(choice == 1){
+//                walka(hero,ork);
+//                pętla = false;
+//            }else {
+//                System.out.println("Koniec gry");
+//                pętla = false;
+//            }
+//
+//        } while (pętla);
+//    }
+//
+//    public static void walka(Character hero, Monster ork) {
+//        System.out.println("---------------------------------------------------");
+//        System.out.println("Początek walki:");
+//        hero.showStats();
+//        ork.showStats();
+//
+//        while (ork.getHp() > 0 && hero.getHp() > 0) {
+//            // Atak gracza na potwora
+//            ork.setHp(ork.getHp() - hero.getEquipment()[0].getDmg());
+//
+//            // Odpowiedź potwora na atak gracza
+//            hero.setHp(hero.getHp() - ork.getAttack());
+//
+//            // Wyświetlenie stanu po rundzie
+//            System.out.println("Po rundzie:");
+//            hero.showStats();
+//            ork.showStats();
+//
+//            // Opóźnienie między rundami
+//            try {
+//                Thread.sleep(2000); // Opóźnienie 1 sekundy (1000 milisekund)
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        // Sprawdzenie wyniku walki
+//        if (hero.getHp() <= 0) {
+//            System.out.println("Przegrałeś");
+//        } else {
+//            System.out.println("Wygrałeś");
+//        }
+//    }
 
 
 
