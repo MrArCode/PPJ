@@ -1,33 +1,71 @@
 package LOTR;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@AllArgsConstructor
-@Getter
-@Setter
 public class Item {
     private String name;
     private int dmg;
     private int strengthRequirement;
+    private int dexterityRequirement;
+    private int willPowerRequirement;
 
-    public String toString() {
-        return name +  ", dmg = " + dmg + ", Strength requirement = " + strengthRequirement;
+    // The internal factory inside the Item class.
+    public static class ItemFactory {
+        public static Item createCommonSword() {
+            return new Item("Common Sword", 15, 10,0,0);
+        }
+//        public static Item create
+//        public static Item create
+//        public static Item create
+//        public static Item create
+//        public static Item create
+//        public static Item create
+                //TODO Tworzenie broni
     }
 
-    // Fabryka wewnętrzna w klasie Item
-    public static class ItemFactory {
+    public Item(String name, int dmg, int strengthRequirement, int dexterityRequirement, int willPowerRequirement) {
+        this.name = name;
+        this.dmg = dmg;
+        this.strengthRequirement = strengthRequirement;
+        this.dexterityRequirement = dexterityRequirement;
+        this.willPowerRequirement = willPowerRequirement;
+    }
 
-        // Może się później przyda
-//        public static Item createSword(String name, int dmg, int strengthRequirement) {
-//            return new Item(name, dmg, strengthRequirement);
-//        }
+    public String getName() {
+        return name;
+    }
 
-        public static Item createCommonSword() {
-            return new Item("Common Sword", 15, 10);
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public int getDmg() {
+        return dmg;
+    }
 
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+
+    public int getStrengthRequirement() {
+        return strengthRequirement;
+    }
+
+    public void setStrengthRequirement(int strengthRequirement) {
+        this.strengthRequirement = strengthRequirement;
+    }
+
+    public int getDexterityRequirement() {
+        return dexterityRequirement;
+    }
+
+    public void setDexterityRequirement(int dexterityRequirement) {
+        this.dexterityRequirement = dexterityRequirement;
+    }
+
+    public int getWillPowerRequirement() {
+        return willPowerRequirement;
+    }
+
+    public void setWillPowerRequirement(int willPowerRequirement) {
+        this.willPowerRequirement = willPowerRequirement;
     }
 }
