@@ -1,12 +1,6 @@
 package LOTR;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
-@AllArgsConstructor
-@Getter
-@Setter
 
 public class Monster {
     private String name;
@@ -18,6 +12,13 @@ public class Monster {
         System.out.println("Name: " + name);
         System.out.println("Hp: " + hp);
         System.out.println("Attack: " + attack);
+    }
+
+    public Monster(String name, int hp, int expToGive, int attack) {
+        this.name = name;
+        this.hp = hp;
+        this.expToGive = expToGive;
+        this.attack = attack;
     }
 
     public static class MonsterFactory{
