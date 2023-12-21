@@ -6,7 +6,7 @@ public class Ex1 {
 
 
     }
-
+    //Dupa
     public static void convertTemperature(int temp, char unit) {
         double convTemp = 0;
 
