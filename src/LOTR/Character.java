@@ -123,7 +123,7 @@ public class Character {
                 to your base race stats or personally distribute up to 20 points
                 across each statistic as you see fit.
                 1. Random points
-                2. I choose my destiny""");
+                2. I choose my destiny (for frajers)""");
 
         // Validate user input for menu choice
         int pointsDistributionChoice = scanner.nextInt();
