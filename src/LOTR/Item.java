@@ -39,7 +39,16 @@ public class Item {
                 //TODO Tworzenie broni
     }
     public static Item normalItemRandom(String name,int dmg, int strengthRequirement, int dexterityRequirement, int willPowerRequirement){
-        int rarity=(int)(Math.random()*3)+1;
+        double rndrarity = Math.random();
+        int rarity;
+        if(rndrarity<0.3){
+            rarity=2;
+        }
+        else if (rndrarity>0.85){
+            rarity=3;
+        }
+        else rarity=1;
+
         double set=Math.random();
         double quality;
         if (set<0.3) {
