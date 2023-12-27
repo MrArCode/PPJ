@@ -1,7 +1,6 @@
 package LOTR;
 
-import static LOTR.Character.createCharacter;
-import static LOTR.Monster.MonsterFactory.createOrk;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +21,8 @@ public class Main {
 //        hero.showStats();
 //        Monster ork = createOrk(); //Tu kiedyś bedzie tablica potwórów albo przynajmniej jakaś pula
 //        GameMethods.choiceMenu(hero,ork);
+
+          Character hero = Character.createHero();
 
 
 //        try {
