@@ -1,6 +1,8 @@
 package LOTR;
 
 
+import static LOTR.Monster.MonsterFactory.createOrk;
+import static LOTR.StatisticChoice.createCharacter;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,13 +18,13 @@ public class Main {
 
 
 
-//        GameMethods.StartMenuShow(); //Menu początkowe
-//        Character hero = createCharacter(); //Tworzy bohatera, na razie na podstawowe sprawy
-//        hero.showStats();
+        GameMethods.StartMenuShow(); //Menu początkowe
+        Character hero = createCharacter(); //Tworzy bohatera, na razie na podstawowe sprawy
+        hero.showStats();
 //        Monster ork = createOrk(); //Tu kiedyś bedzie tablica potwórów albo przynajmniej jakaś pula
 //        GameMethods.choiceMenu(hero,ork);
 
-          Character hero = Character.createHero();
+//          Character hero = Character.createHero();
 
 
 //        try {

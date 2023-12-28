@@ -32,8 +32,27 @@ public class Item {
         public static Item createSpear() {
             return normalItemRandom("Spear", 4, 15, 20, 0);
         }
+        public static Item createAeglos() {
+            return new Item("Aeglos","Epic", 13, 40, 25, 25);
+        }
+        public static Item createAnduril() {
+            return new Item("Andúril","Legendary", 18, 55, 35, 30);
+        }
+
         //Range
+
+        public static Item createBow() {
+            return normalItemRandom("Bow", 3, 10, 25, 0);
+        }
+        public static Item createCrossbow() {
+            return normalItemRandom("Crossbow", 5, 25, 20, 0);
+        }
+
         //Magic
+
+        public static Item createStaff() {
+            return normalItemRandom("Staff", 3, 5, 15, 25);
+        }
 //        public static Item create
 //        public static Item create
 //        public static Item create
@@ -65,26 +84,26 @@ public class Item {
             case 1 -> {
                 yield new Item("Common " + name,
                         "Common",
+                        (int) (dmg * quality),
                         (int) (strengthRequirement * quality),
                         (int) (dexterityRequirement * quality),
-                        (int) (willPowerRequirement * quality),
                         (int) (willPowerRequirement * quality));
             }
             case 2 -> {
                 yield new Item("Uncommon " + name,
                         "Uncommon",
-                        (int) (strengthRequirement * 1.5 * quality),
-                        (int) (dexterityRequirement * 1.5 * quality),
-                        (int) (willPowerRequirement * 1.5 * quality),
-                        (int) (willPowerRequirement * 1.5 * quality));
+                        (int) (dmg * quality * 1.3),
+                        (int) (strengthRequirement * quality * 1.3),
+                        (int) (dexterityRequirement * quality * 1.3),
+                        (int) (willPowerRequirement * quality * 1.3));
             }
             case 3 -> {
                 yield new Item("Rare " + name,
                         "Rare",
-                        (int) (strengthRequirement * 2 * quality),
-                        (int) (dexterityRequirement * 2 * quality),
-                        (int) (willPowerRequirement * 2 * quality),
-                        (int) (willPowerRequirement * 2 * quality));
+                        (int) (dmg * quality * 1.7),
+                        (int) (strengthRequirement * quality * 1.7),
+                        (int) (dexterityRequirement * quality * 1.7),
+                        (int) (willPowerRequirement * quality * 1.7));
             }
             default -> null;
         };
