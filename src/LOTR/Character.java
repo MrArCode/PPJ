@@ -33,25 +33,25 @@ public class Character {
 //======================================================================================================================
 
     // Method for showing hero's stats in a table format
-    public void showStats() {
-        System.out.println("--------------------------------");
-        System.out.printf("| %-15s | %-10s |%n", "Attribute", "Value");
-        System.out.println("--------------------------------");
-        System.out.printf("| %-15s | %-10s |%n", "Name", name);
-        System.out.printf("| %-15s | %-10s |%n", "Race", race);
-        System.out.printf("| %-15s | %-10s |%n", "Weapon Skill", weaponSkill);
-        System.out.printf("| %-15s | %-10s |%n", "Ballistic Skill", ballisticSkill);
-        System.out.printf("| %-15s | %-10s |%n", "Strength", strength);
-        System.out.printf("| %-15s | %-10s |%n", "Resistance", resistance);
-        System.out.printf("| %-15s | %-10s |%n", "Dexterity", dexterity);
-        System.out.printf("| %-15s | %-10s |%n", "Intelligence", intelligence);
-        System.out.printf("| %-15s | %-10s |%n", "Will Power", willPower);
-        System.out.printf("| %-15s | %-10s |%n", "Charisma", charisma);
-        System.out.printf("| %-15s | %-10s |%n", "Attack", attack);
-        System.out.printf("| %-15s | %-10s |%n", "Health", health);
-        System.out.printf("| %-15s | %-10s |%n", "Magic", magic);
-        System.out.printf("| %-15s | %-10s |%n", "Mana", mana);
-        System.out.println("--------------------------------");
+    public static void showStats(Character character) {
+        System.out.println("-------------------------------------");
+        System.out.printf("| %-15s | %-15s |%n", "Attribute", "Value");
+        System.out.println("-------------------------------------");
+        System.out.printf("| %-15s | %-15s |%n", "Name", character.getName());
+        System.out.printf("| %-15s | %-15s |%n", "Race", character.getRace());
+        System.out.printf("| %-15s | %-15s |%n", "Weapon Skill", character.getWeaponSkill());
+        System.out.printf("| %-15s | %-15s |%n", "Ballistic Skill", character.getBallisticSkill());
+        System.out.printf("| %-15s | %-15s |%n", "Strength", character.getStrength());
+        System.out.printf("| %-15s | %-15s |%n", "Resistance", character.getResistance());
+        System.out.printf("| %-15s | %-15s |%n", "Dexterity", character.getDexterity());
+        System.out.printf("| %-15s | %-15s |%n", "Intelligence", character.getIntelligence());
+        System.out.printf("| %-15s | %-15s |%n", "Will Power", character.getWillPower());
+        System.out.printf("| %-15s | %-15s |%n", "Charisma", character.getCharisma());
+        System.out.printf("| %-15s | %-15s |%n", "Attack", character.getAttack());
+        System.out.printf("| %-15s | %-15s |%n", "Health", character.getHealth());
+        System.out.printf("| %-15s | %-15s |%n", "Magic", character.getMagic());
+        System.out.printf("| %-15s | %-15s |%n", "Mana", character.getMana());
+        System.out.println("-------------------------------------");
 
 //        System.out.println("Equipment:");
 //        for (Item item : equipment) {

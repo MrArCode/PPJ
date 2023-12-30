@@ -1,6 +1,7 @@
 package LOTR;
 
 
+import java.lang.reflect.Array;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,14 +16,17 @@ public class Main {
 //        musicThread.start();
 
 
-
-//        GameMethods.StartMenuShow(); //Menu początkowe
-//        Character hero = createCharacter(); //Tworzy bohatera, na razie na podstawowe sprawy
-//        hero.showStats();
-//        Monster ork = createOrk(); //Tu kiedyś bedzie tablica potwórów albo przynajmniej jakaś pula
-//        GameMethods.choiceMenu(hero,ork);
-
-          Character hero = Character.createHero();
+//          Character hero = Character.createHero();
+//          Character goblin = Monster.MonsterFactory.createGoblinArcher();
+//          showStats(hero);
+//          showStats(goblin);
+          Monster[] group = {Monster.MonsterFactory.createGoblinMiner(),Monster.MonsterFactory.createGoblinMiner()};
+          System.out.println(group[0].getHealth());
+          System.out.println(group[1].getHealth());
+          System.out.println();
+          group[0].setHealth(1);
+          System.out.println(group[0].getHealth());
+          System.out.println(group[1].getHealth());
 
 
 //        try {
