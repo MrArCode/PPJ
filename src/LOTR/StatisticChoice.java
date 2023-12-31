@@ -206,7 +206,7 @@ public class StatisticChoice {
         int magic = 0;
         int mana = 0;
 
-        Item[] equipment = new Item[5];
+//        Item1[] equipment = new Item1[5];
 //        equipment[0] = Item.ItemFactory.createCommonSword(); // You can modify this based on your actual equipment representation
 
         //System.out.println("Congratulations! You've just brought your own hero to life in the enchanting realm of Middle-Earth.");
