@@ -101,4 +101,6 @@ public class Monster extends Character {
             return generateGroupOfEnemy(11, 15);
         }
     }
+
+
 }

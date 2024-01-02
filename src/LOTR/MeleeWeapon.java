@@ -47,4 +47,6 @@ public class MeleeWeapon extends Weapon {
     public void setStrengthRequirement(int strengthRequirement) {
         this.strengthRequirement = strengthRequirement;
     }
+
+
 }
