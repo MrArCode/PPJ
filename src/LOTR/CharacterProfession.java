@@ -1,5 +1,7 @@
 package LOTR;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class CharacterProfession {
@@ -21,6 +23,14 @@ public class CharacterProfession {
     private int mana;
 
     public static class ClassFactory {
+
+//        public static void loadProffesions(){
+//            CharacterProfession archer = archer();
+//            CharacterProfession mage = mage();
+//        }
+//        public static CharacterProfession Prof(String prof){
+//            return CharacterProfession.classFactory.a
+//        }
 
         public static CharacterProfession archer() {
             return new CharacterProfession("Archer", "A nimble hero with a keen eye and unparalleled skill in distant combat. " +
@@ -88,6 +98,9 @@ public class CharacterProfession {
                     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
         }
 
+    }
+    public String toString(){
+        return name;
     }
 
 
