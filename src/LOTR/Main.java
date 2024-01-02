@@ -1,8 +1,6 @@
 package LOTR;
 
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -15,9 +13,10 @@ public class Main {
 //
 //        musicThread.start();
 
+
         Character hero = new Character("aa","elf",100,12,12,1,2,12,12,1,2,100,10,10,CharacterProfession.ClassFactory.warrior());
-        ArrayList<Monster> monsters = Monster.EnemyGroupGenerator.generateGroupOfEnemy(2,2);
-        Battle.battle(hero,monsters);
+//        ArrayList<Monster> monsters = Monster.EnemyGroupGenerator.generateGroupOfEnemy(2,2);
+//        Battle.battle(hero,monsters);
 
 
 //        try {
