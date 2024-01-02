@@ -52,7 +52,7 @@ public class Item extends Equipment {
             } else {
                 quality = 3;
             }
-        } else {
+        } else if (rarity == 3) {
             if (randomQuality < 0.45) {
                 quality = 1;
             } else if (randomQuality < 0.65) {
@@ -60,6 +60,8 @@ public class Item extends Equipment {
             } else {
                 quality = 3;
             }
+        } else {
+            quality = 0;
         }
 
         return quality;
