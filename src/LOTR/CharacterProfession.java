@@ -1,8 +1,9 @@
 package LOTR;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class CharacterProfession {
+public class CharacterProfession implements Serializable {
     private String name;
     private String professionDescription;
 
@@ -21,6 +22,7 @@ public class CharacterProfession {
     private int mana;
 
     public static class ClassFactory {
+
 
         public static CharacterProfession archer() {
             return new CharacterProfession("Archer", "A nimble hero with a keen eye and unparalleled skill in distant combat. " +
@@ -89,6 +91,9 @@ public class CharacterProfession {
         }
 
     }
+    public String toString(){
+        return name;
+    }
 
 
     public static CharacterProfession chooseCharacterProfession() {
@@ -144,7 +149,6 @@ public class CharacterProfession {
 
         System.out.println("Congratulations, you have chosen your profession. " + profession.getName());
 
-        scanner.close();
 
         return profession;
     }

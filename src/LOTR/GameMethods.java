@@ -1,10 +1,13 @@
 package LOTR;
 
+import java.io.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameMethods {
 
-    public static void StartMenuShow() {
+    //Menu do tworzenia postaci i prolog
+    public static void intro(Character hero) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println();
@@ -29,12 +32,64 @@ public class GameMethods {
 
         System.out.println();
         System.out.print("Press enter to continue...");
-        scanner.nextLine();
+        scanner.next();
         System.out.println();
+        gameMenu(hero);
 
     }
 
+    //Menu początkowe na starcie gry (ma być inne menu w trakcie gry)
+    public static void startMenu(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("MENU GŁÓWNE"+"\n"+
+                "[1] Wczytaj grę"+"\n"+
+                "[2] Nowa gra"+"\n"+
+                "[3] Wyjdź");
+        int choice=-1;
+        try {
 
+            choice = sc.nextInt();
+        }
+        catch (InputMismatchException e){
+            System.out.println("Nie poprawny wybór");
+            startMenu();
+        }
+        sc.nextLine();
+        switch (choice){
+            case 1:
+                try {
+                    Memory.loadGame();
+                } catch (IOException | ClassNotFoundException e) {
+                    System.out.println("Brak zapisów");
+                    startMenu();
+                }
+                break;
+            case 2:
+                try {
+                    Memory.createNewGame();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+
+            case 3:
+                System.out.println("Logging out...");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Nie poprawny wybór");
+                startMenu();
+        }
+    }
+    public static void gameMenu(Character hero){
+        Character.barStats(hero);
+        System.out.println("WYBIERZ DZIAŁANIE: ");
+        System.out.println("[1] MAPA"+"\n"+
+                "[2] EKWIPUNEK"+"\n"+
+                "[3] STATYSTYKI"+"\n"+
+                "[4] ZAPISZ"+"\n"+
+                "[5] WYJDŹ"+"\n");
+    }
 
 
 //    public static void choiceMenu(Character hero, Monster ork){
