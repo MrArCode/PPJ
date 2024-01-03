@@ -3,7 +3,7 @@ package LOTR;
 
 public class Main {
     public static void main(String[] args) {
-        GameMethods.StartMenu();
+        GameMethods.startMenu();
 
 //        Thread musicThread = new Thread(() -> {
 //            Music musicPlayer = new Music();

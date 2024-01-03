@@ -23,13 +23,6 @@ public class CharacterProfession implements Serializable {
 
     public static class ClassFactory {
 
-//        public static void loadProffesions(){
-//            CharacterProfession archer = archer();
-//            CharacterProfession mage = mage();
-//        }
-//        public static CharacterProfession Prof(String prof){
-//            return CharacterProfession.classFactory.a
-//        }
 
         public static CharacterProfession archer() {
             return new CharacterProfession("Archer", "A nimble hero with a keen eye and unparalleled skill in distant combat. " +

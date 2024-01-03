@@ -63,6 +63,11 @@ public class Character implements Serializable {
 //        }
 //        System.out.println("--------------------------------");
     }
+    public static void barStats(Character hero){
+        System.out.println("======================================="+"\n" +
+                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+"\n"+
+                           "=======================================");
+    }
 
 //======================================================================================================================
 
@@ -83,23 +88,6 @@ public class Character implements Serializable {
         this.magic = magic;
         this.mana = mana;
         this.profession = profession;
-    }
-    public String getStatsForSave(){
-        return  this.name+"\n"+
-                this.race+"\n"+
-                this.weaponSkill+"\n"+
-                this.ballisticSkill+"\n"+
-                this.strength+"\n"+
-                this.resistance+"\n"+
-                this.dexterity+"\n"+
-                this.intelligence+"\n"+
-                this.willPower+"\n"+
-                this.charisma+"\n"+
-                this.attack+"\n"+
-                this.health+"\n"+
-                this.magic+"\n"+
-                this.mana+"\n"+
-                this.profession;
     }
 
 //======================================================================================================================
