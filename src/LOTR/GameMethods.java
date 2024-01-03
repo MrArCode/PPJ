@@ -1,5 +1,6 @@
 package LOTR;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class GameMethods {
@@ -30,80 +31,87 @@ public class GameMethods {
 
         System.out.println();
         System.out.print("Press enter to continue...");
-        scanner.nextLine();
+        scanner.next();
         System.out.println();
 
     }
 
     //Menu początkowe na starcie gry (ma być inne menu w trakcie gry)
-//    public static void StartMenu(){
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("MENU GŁÓWNE"+"\n"+
-//                "[1] Wczytaj grę"+"\n"+
-//                "[2] Nowa gra"+"\n"+
-//                "[3] Wyjdź");
-//        int choice=sc.nextInt();
-//        System.out.println(choice);
-//        switch (choice){
-//            case 1:
-//
-//                break;
-//            case 2:
-//                try {
-//                    CreateNewGame();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
-//
-//            case 3:
-//                System.out.println("Logging out...");
-//                System.exit(0);
-//                break;
-//            default:
-//                System.out.println("Nie poprawny wybór");
-//                StartMenu();
-//        }
-//    }
+    public static void StartMenu(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("MENU GŁÓWNE"+"\n"+
+                "[1] Wczytaj grę"+"\n"+
+                "[2] Nowa gra"+"\n"+
+                "[3] Wyjdź");
+        int choice=sc.nextInt();
+        sc.nextLine();
+        switch (choice){
+            case 1:
+                try {
+                    loadGame();
+                } catch (IOException | ClassNotFoundException e) {
+                    System.out.println("Brak zapisów");
+                    StartMenu();
+                }
+                break;
+            case 2:
+                try {
+                    createNewGame();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+
+            case 3:
+                System.out.println("Logging out...");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Nie poprawny wybór");
+                StartMenu();
+        }
+    }
+
     //Ładowanie zapisu gry
-//    public Character LoadGame() throws FileNotFoundException, SecurityException, NoSuchMethodException, IllegalArgumentException
-//    {
-//        File saves = new File("src/LOTR/Saves");
-//        Scanner sc  =new Scanner(saves);
-//        Scanner scchoice = new Scanner(System.in);
-//        System.out.println("Wybierz zapis: ");
-//        for (int i = 0; i<new File(saves.toString()).listFiles().length; i++){
-//            System.out.println("["+i+"] "+saves.toString());
-//        }
-//        int choice = scchoice.nextInt();
-//        Scanner fr = new Scanner(saves.listFiles()[choice]);
-//        return new Character(fr.nextLine(),fr.nextLine(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt(),fr.nextInt());;
-//    }
-//    // Tworzenie/rozpoczecie nowej gry
-//    public static void CreateNewGame() throws IOException {
-//        Scanner sc = new Scanner(System.in);
-//        boolean exist=false;
-//        System.out.println("Nazwij zapis: ");
-//        String name = sc.nextLine();
-//        for (int i =0;i<new File("src/LOTR/Saves/").listFiles().length;i++) {
-//            if(("src\\LOTR\\Saves\\"+name).equals(new File("src/LOTR/Saves/").listFiles()[i].toString())) {
-//                exist = true;
-//                break;
-//            }
-//        }
-//        if (exist){
-//            System.out.println("Nazwa istnieje");
-//            CreateNewGame();
-//        }else {
-//            File newgame = new File("src/LOTR/Saves/" + name);
-//            newgame.createNewFile();
-//            FileWriter writer = new FileWriter(newgame);
-//            Character hero = Character.createHero();
-//            writer.write(hero.getStatsForSave());
-//            writer.close();
-//            Intro();
-//        }
-//    }
+    public static void loadGame() throws IOException, SecurityException, IllegalArgumentException, ClassNotFoundException {
+        File saves = new File("src/LOTR/Saves");
+        Scanner scchoice = new Scanner(System.in);
+        System.out.println("Wybierz zapis: ");
+        for (int i = 0; i < new File(saves.toString()).listFiles().length; i++) {
+            System.out.println("[" + (i+1) + "] " + saves.listFiles()[i]);
+        }
+        int choice = scchoice.nextInt();
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(saves.listFiles()[choice - 1]));
+        Character hero = (Character) ois.readObject();
+        hero.showStats();
+    }
+
+    //    // Tworzenie/rozpoczecie nowej gry
+    public static void createNewGame() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        boolean exist = false;
+        System.out.println("Nazwij zapis: ");
+        String name = sc.nextLine();
+        for (int i = 0; i < new File("src/LOTR/Saves/").listFiles().length; i++) {
+            if (("src\\LOTR\\Saves\\" + name).equals(new File("src/LOTR/Saves/").listFiles()[i].toString())) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            System.out.println("Nazwa istnieje");
+            createNewGame();
+        }else {
+            File newgame = new File("src/LOTR/Saves/" + name);
+            newgame.createNewFile();
+            FileWriter writer = new FileWriter(newgame);
+            Character hero = Character.createHero();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(newgame));
+            oos.writeObject(hero);
+            writer.close();
+            Intro();
+        }
+    }
 
 //    public static void choiceMenu(Character hero, Monster ork){
 //        Scanner scanner = new Scanner(System.in);

@@ -1,6 +1,8 @@
 package LOTR;
 
-public class Character {
+import java.io.Serializable;
+
+public class Character implements Serializable {
     private String name;
     private String race;
 

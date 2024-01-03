@@ -1,10 +1,9 @@
 package LOTR;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class CharacterProfession {
+public class CharacterProfession implements Serializable {
     private String name;
     private String professionDescription;
 
@@ -157,7 +156,6 @@ public class CharacterProfession {
 
         System.out.println("Congratulations, you have chosen your profession. " + profession.getName());
 
-        scanner.close();
 
         return profession;
     }
