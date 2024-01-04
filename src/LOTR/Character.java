@@ -22,6 +22,8 @@ public class Character implements Serializable {
 
     private CharacterProfession profession;
 
+    private Equipment[] equipment;
+
 
 
 //======================================================================================================================
@@ -29,6 +31,8 @@ public class Character implements Serializable {
     public static Character createHero(){
        Character hero = StatisticChoice.createCharacter();
        hero.setProfession(CharacterProfession.chooseCharacterProfession());
+       Equipment[] equipment = Equipment.startEquipmentOfHero(hero.profession);
+       hero.setEquipment(equipment);
        return hero;
     }
 
@@ -55,13 +59,7 @@ public class Character implements Serializable {
         System.out.printf("| %-15s | %-15s |%n", "Mana", this.getMana());
         System.out.println("-------------------------------------");
 
-//        System.out.println("Equipment:");
-//        for (Item item : equipment) {
-//            if (item != null) {
-//                System.out.printf("| %-15s | %-10s | %-10s |%n", "-", "-", item);
-//            }
-//        }
-//        System.out.println("--------------------------------");
+
     }
     public static void barStats(Character hero){
         System.out.println("======================================="+"\n" +
@@ -72,7 +70,7 @@ public class Character implements Serializable {
 //======================================================================================================================
 
     public Character(String name, String race, int weaponSkill, int ballisticSkill, int strength, int resistance,
-                     int dexterity, int intelligence, int willPower, int charisma, int attack, int health, int magic, int mana, CharacterProfession profession) {
+                     int dexterity, int intelligence, int willPower, int charisma, int attack, int health, int magic, int mana, CharacterProfession profession, Equipment[] equipment) {
         this.name = name;
         this.race = race;
         this.weaponSkill = weaponSkill;
@@ -88,6 +86,7 @@ public class Character implements Serializable {
         this.magic = magic;
         this.mana = mana;
         this.profession = profession;
+        this.equipment = equipment;
     }
 
 //======================================================================================================================
@@ -211,6 +210,14 @@ public class Character implements Serializable {
 
     public void setProfession(CharacterProfession profession) {
         this.profession = profession;
+    }
+
+    public Equipment[] getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment[] equipment) {
+        this.equipment = equipment;
     }
 }
 

@@ -212,6 +212,6 @@ public class StatisticChoice {
         //System.out.println("Congratulations! You've just brought your own hero to life in the enchanting realm of Middle-Earth.");
 
         return new Character(name, race, weaponSkill, ballisticSkill, strength, resistance, dexterity,
-                intelligence, willPower, charisma, attack, health, magic, mana, null);
+                intelligence, willPower, charisma, attack, health, magic, mana, null, null);
     }
 }

@@ -1,18 +1,14 @@
 package LOTR;
 
 public class HeavyArmor extends Armor {
-    private int strengthRequirement;
 
-    public HeavyArmor(String name, String description, int rarity, double value, int defense, int strengthRequirement) {
-        super(name, description, rarity, value, defense);
-        this.strengthRequirement = strengthRequirement;
+    public HeavyArmor(String name, String description, int rarity, double value, int defense, int strengthRequirement, int dexterityRequirement, int willPowerRequirement) {
+        super(name, description, rarity, value, defense, strengthRequirement, dexterityRequirement, willPowerRequirement);
     }
 
-    public int getStrengthRequirement() {
-        return strengthRequirement;
-    }
-
-    public void setStrengthRequirement(int strengthRequirement) {
-        this.strengthRequirement = strengthRequirement;
+    public static class HeavyArmorFactory {
+        public static HeavyArmor createHeavyArmor() {
+            return new HeavyArmor("Heavy Armor", "", generateRandomRarity(), 50, 5, 10, 10, 10);
+        }
     }
 }

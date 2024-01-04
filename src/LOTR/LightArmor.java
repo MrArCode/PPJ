@@ -1,18 +1,17 @@
 package LOTR;
 
 public class LightArmor extends Armor {
-    private int dexterityRequirement;
 
-    public LightArmor(String name, String description, int rarity, double value, int defense, int dexterityRequirement) {
-        super(name, description, rarity, value, defense);
-        this.dexterityRequirement = dexterityRequirement;
+
+    public LightArmor(String name, String description, int rarity, double value, int defense, int strengthRequirement, int dexterityRequirement, int willPowerRequirement) {
+        super(name, description, rarity, value, defense, strengthRequirement, dexterityRequirement, willPowerRequirement);
     }
 
-    public int getDexterityRequirement() {
-        return dexterityRequirement;
+    public static class LightArmorFactory {
+        public static LightArmor createLightArmor() {
+            return new LightArmor("Light Armor", "", generateRandomRarity(), 50, 1, 10, 10, 10);
+        }
+
     }
 
-    public void setDexterityRequirement(int dexterityRequirement) {
-        this.dexterityRequirement = dexterityRequirement;
-    }
 }

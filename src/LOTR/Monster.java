@@ -8,9 +8,10 @@ public class Monster extends Character {
 
     private int expToGive;
 
+
     public Monster(String name, String race, int weaponSkill, int ballisticSkill, int strength, int resistance,
                    int dexterity, int intelligence, int willPower, int attack, int health, int magic, int mana, CharacterProfession profession, int expToGive) {
-        super(name, race, weaponSkill, ballisticSkill, strength, resistance, dexterity, intelligence, willPower, 0, attack, health, magic, mana, null);
+        super(name, race, weaponSkill, ballisticSkill, strength, resistance, dexterity, intelligence, willPower, 0, attack, health, magic, mana, null,Equipment.monsterEquipment(name));
         this.expToGive = expToGive;
     }
 
@@ -103,4 +104,11 @@ public class Monster extends Character {
     }
 
 
+    public int getExpToGive() {
+        return expToGive;
+    }
+
+    public void setExpToGive(int expToGive) {
+        this.expToGive = expToGive;
+    }
 }
