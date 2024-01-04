@@ -23,7 +23,6 @@ public class Character implements Serializable {
     private CharacterProfession profession;
 
 
-
 //======================================================================================================================
 
     public static Character createHero(){
