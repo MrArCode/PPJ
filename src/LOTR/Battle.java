@@ -6,31 +6,67 @@ import java.util.Scanner;
 
 public class Battle {
 
+    private static final int DICE_SIDES = 101;
+    private static final int DISPLAY_CHUNK_SIZE = 5;
 
     public static void battle(Character hero, ArrayList<Monster> monsters) {
         displayEnemyStatus(monsters);
-        while (!monsters.isEmpty()) {
+
+        while (!monsters.isEmpty() && hero.getHealth() > 0) {
             int attackedEnemy = chooseEnemyToAttack(monsters);
             heroAttack(hero, monsters, attackedEnemy);
+            monsterAttack(hero, monsters);
+        }
+
+        if (hero.getHealth() <= 0) {
+            System.out.println("You are dead, not big surprise");
+        } else {
+            System.out.println("Congratulations! You have defeated all enemies.");
         }
     }
+
+//======================================================================================================================
+    //Rekurencja dla Tymona
+//public static void battle(Character hero, ArrayList<Monster> monsters) {
+//    displayEnemyStatus(monsters);
+//
+//    battleRound(hero, monsters);
+//}
+//
+//    private static void battleRound(Character hero, ArrayList<Monster> monsters) {
+//        if (monsters.isEmpty() || hero.getHealth() <= 0) {
+//            endBattle(hero);
+//        } else {
+//            int attackedEnemy = chooseEnemyToAttack(monsters);
+//            heroAttack(hero, monsters, attackedEnemy);
+//            monsterAttack(hero, monsters);
+//
+//            battleRound(hero, monsters);
+//        }
+//    }
+//
+//    private static void endBattle(Character hero) {
+//        if (hero.getHealth() <= 0) {
+//            System.out.println("You are dead, not big surprise");
+//        } else {
+//            System.out.println("Congratulations! You have defeated all enemies.");
+//        }
+//    }
+
+//======================================================================================================================
+
 
     public static int throwTheDice() {
         Random random = new Random();
-        return random.nextInt(101);
+        return random.nextInt(DICE_SIDES);
     }
 
     private static void displayEnemyStatus(ArrayList<Monster> monsters) {
-        // Display the status of enemies
-        System.out.print("You are facing " + monsters.size() + " ");
-        if (monsters.size() == 1) {
-            System.out.println("enemy.");
-        } else {
-            System.out.println("enemies.");
-        }
+        System.out.print("You are facing " + monsters.size() + " " +
+                (monsters.size() == 1 ? "enemy." : "enemies.") + "\n");
 
-        for (int i = 0; i < monsters.size(); i += 5) {
-            for (int j = i; j < i + 5 && j < monsters.size(); j++) {
+        for (int i = 0; i < monsters.size(); i += DISPLAY_CHUNK_SIZE) {
+            for (int j = i; j < i + DISPLAY_CHUNK_SIZE && j < monsters.size(); j++) {
                 System.out.print("|" + (j + 1) + "." + " " + monsters.get(j).getName() + "|" + " ");
             }
             System.out.println();
@@ -38,26 +74,22 @@ public class Battle {
     }
 
     private static int chooseEnemyToAttack(ArrayList<Monster> monsters) {
-        // User input handling to choose an enemy to attack
         Scanner scanner = new Scanner(System.in);
+        int attackedEnemy;
 
-        System.out.println("Choose the enemy you want to attack: ");
-        int attackedEnemy = Integer.parseInt(scanner.nextLine());
-
-        if (attackedEnemy <= 0 || attackedEnemy > monsters.size()) {
-            System.out.println("Please enter a valid number.");
+        do {
             System.out.println("Choose the enemy you want to attack: ");
             attackedEnemy = Integer.parseInt(scanner.nextLine());
-        }
+
+            if (attackedEnemy <= 0 || attackedEnemy > monsters.size()) {
+                System.out.println("Please enter a valid number.");
+            }
+        } while (attackedEnemy <= 0 || attackedEnemy > monsters.size());
 
         return attackedEnemy - 1;
     }
 
     private static void heroAttack(Character hero, ArrayList<Monster> monsters, int attackedEnemy) {
-        // Player's attack logic
-        Item[] equipment = new Item[5]; // TODO: This is a temporary solution
-        equipment[0] = MeleeWeapon.MeleeWeaponFactory.createLongSword();
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("You are attacking " + monsters.get(attackedEnemy).getName());
@@ -65,8 +97,9 @@ public class Battle {
         String diceRoll = scanner.nextLine();
 
         if (throwTheDice() <= hero.getWeaponSkill()) {
-            System.out.println("You hit the enemy, dealing " + ((MeleeWeapon) equipment[0]).getBaseDmg());
-            monsters.get(attackedEnemy).setHealth(monsters.get(attackedEnemy).getHealth() - ((MeleeWeapon) equipment[0]).getBaseDmg());
+            int damage = ((Weapon) hero.getEquipment()[0]).getBaseDmg();
+            System.out.println("You hit the enemy, dealing " + damage);
+            monsters.get(attackedEnemy).takeDamage(damage);
 
             if (monsters.get(attackedEnemy).getHealth() <= 0) {
                 System.out.println("You killed " + monsters.get(attackedEnemy).getName());
@@ -78,18 +111,18 @@ public class Battle {
 
         if (!monsters.isEmpty()) {
             displayEnemyStatus(monsters);
-
-        } else {
-            System.out.println("You have defeated all enemies");
         }
     }
-        //TODO dokończyć po zrobieniu ekwipunku
-//    private static void monsterAttack(Character hero, ArrayList<Monster> monsters) {
-//        for (int i = 0; i < monsters.size(); i++) {
-//            if (throwTheDice() <= monsters.get(i).getWeaponSkill()) {
-//                System.out.println(monsters.get(i).getName() + "hit you, dealing " + );
-//            }
-//        }
-//    }
 
+    private static void monsterAttack(Character hero, ArrayList<Monster> monsters) {
+        for (Monster monster : monsters) {
+            if (throwTheDice() <= monster.getWeaponSkill()) {
+                int damage = ((Weapon) monster.getEquipment()[0]).getBaseDmg();
+                System.out.println(monster.getName() + " hit you, dealing " + damage);
+                hero.takeDamage(damage);
+            } else {
+                System.out.println(monster.getName() + " missed");
+            }
+        }
+    }
 }

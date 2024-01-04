@@ -14,9 +14,9 @@ public class Main {
 //        musicThread.start();
 
 
-//        Character hero = new Character("aa","elf",100,12,12,1,2,12,12,1,2,100,10,10,CharacterProfession.ClassFactory.warrior());
-//
-
+//        Character hero = Character.createHero();
+//        ArrayList<Monster> group = Monster.EnemyGroupGenerator.generateGroupOfEnemy(3,3);
+//        Battle.battle(hero,group);
 
 //        Character hero = Character.createHero();
 //        int dmg = ((Weapon)hero.getEquipment()[0]).getBaseDmg();

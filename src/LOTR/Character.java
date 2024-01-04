@@ -68,6 +68,15 @@ public class Character implements Serializable {
     }
 
 //======================================================================================================================
+    public void takeDamage(int damage) {
+        if (damage > 0) {
+            health -= damage;
+            if (health < 0) {
+                health = 0;
+            }
+        }
+    }
+//======================================================================================================================
 
     public Character(String name, String race, int weaponSkill, int ballisticSkill, int strength, int resistance,
                      int dexterity, int intelligence, int willPower, int charisma, int attack, int health, int magic, int mana, CharacterProfession profession, Equipment[] equipment) {
