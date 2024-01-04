@@ -25,7 +25,6 @@ public class Character implements Serializable {
     private Equipment[] equipment;
 
 
-
 //======================================================================================================================
 
     public static Character createHero(){

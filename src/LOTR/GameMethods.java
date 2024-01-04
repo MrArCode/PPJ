@@ -83,12 +83,26 @@ public class GameMethods {
     }
     public static void gameMenu(Character hero){
         Character.barStats(hero);
+        Scanner sc = new Scanner(System.in);
         System.out.println("WYBIERZ DZIAŁANIE: ");
         System.out.println("[1] MAPA"+"\n"+
                 "[2] EKWIPUNEK"+"\n"+
                 "[3] STATYSTYKI"+"\n"+
                 "[4] ZAPISZ"+"\n"+
                 "[5] WYJDŹ"+"\n");
+        int choice =sc.nextInt();
+        switch (choice){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                hero.showStats();
+                gameMenu(hero);
+                break;
+            default:
+                gameMenu(hero);
+        }
     }
 
 
