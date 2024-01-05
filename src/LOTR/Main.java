@@ -14,10 +14,12 @@ public class Main {
 //        musicThread.start();
 
 
-//        Character hero = Character.createHero();
+        Character hero = Character.createHero();
 //        ArrayList<Monster> group = Monster.EnemyGroupGenerator.generateGroupOfEnemy(3,3);
 //        Battle.battle(hero,group);
 
+
+        GameMethods.gameMenu(hero);
 //        Character hero = Character.createHero();
 //        int dmg = ((Weapon)hero.getEquipment()[0]).getBaseDmg();
 //        System.out.println(dmg);

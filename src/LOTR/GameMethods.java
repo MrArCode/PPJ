@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static LOTR.World.mapMenu;
+
 public class GameMethods {
 
     //Menu do tworzenia postaci i prolog
@@ -39,23 +41,22 @@ public class GameMethods {
     }
 
     //Menu początkowe na starcie gry (ma być inne menu w trakcie gry)
-    public static void startMenu(){
+    public static void startMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("MENU GŁÓWNE"+"\n"+
-                "[1] Wczytaj grę"+"\n"+
-                "[2] Nowa gra"+"\n"+
+        System.out.println("MENU GŁÓWNE" + "\n" +
+                "[1] Wczytaj grę" + "\n" +
+                "[2] Nowa gra" + "\n" +
                 "[3] Wyjdź");
-        int choice=-1;
+        int choice = -1;
         try {
 
             choice = sc.nextInt();
-        }
-        catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Nie poprawny wybór");
             startMenu();
         }
         sc.nextLine();
-        switch (choice){
+        switch (choice) {
             case 1:
                 try {
                     Memory.loadGame();
@@ -81,18 +82,21 @@ public class GameMethods {
                 startMenu();
         }
     }
-    public static void gameMenu(Character hero){
+
+    public static void gameMenu(Character hero) {
         Character.barStats(hero);
         Scanner sc = new Scanner(System.in);
         System.out.println("WYBIERZ DZIAŁANIE: ");
-        System.out.println("[1] MAPA"+"\n"+
-                "[2] EKWIPUNEK"+"\n"+
-                "[3] STATYSTYKI"+"\n"+
-                "[4] ZAPISZ"+"\n"+
-                "[5] WYJDŹ"+"\n");
-        int choice =sc.nextInt();
-        switch (choice){
+        System.out.println("[1] MAPA" + "\n" +
+                "[2] EKWIPUNEK" + "\n" +
+                "[3] STATYSTYKI" + "\n" +
+                "[4] ZAPISZ" + "\n" +
+                "[5] WYJDŹ" + "\n");
+        int choice = sc.nextInt();
+        switch (choice) {
             case 1:
+                mapMenu(hero);
+                gameMenu(hero);
                 break;
             case 2:
                 break;
@@ -104,70 +108,4 @@ public class GameMethods {
                 gameMenu(hero);
         }
     }
-
-
-//    public static void choiceMenu(Character hero, Monster ork){
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("""
-//                1. Walcz
-//                2. Uciekaj""");
-//
-//        int choice = scanner.nextInt();
-//        boolean pętla = true;
-//
-//        do {
-//            if(choice == 1){
-//                walka(hero,ork);
-//                pętla = false;
-//            }else {
-//                System.out.println("Koniec gry");
-//                pętla = false;
-//            }
-//
-//        } while (pętla);
-//    }
-//
-//    public static void walka(Character hero, Monster ork) {
-//        System.out.println("---------------------------------------------------");
-//        System.out.println("Początek walki:");
-//        hero.showStats();
-//        ork.showStats();
-//
-//        while (ork.getHp() > 0 && hero.getHp() > 0) {
-//            // Atak gracza na potwora
-//            ork.setHp(ork.getHp() - hero.getEquipment()[0].getDmg());
-//
-//            // Odpowiedź potwora na atak gracza
-//            hero.setHp(hero.getHp() - ork.getAttack());
-//
-//            // Wyświetlenie stanu po rundzie
-//            System.out.println("Po rundzie:");
-//            hero.showStats();
-//            ork.showStats();
-//
-//            // Opóźnienie między rundami
-//            try {
-//                Thread.sleep(2000); // Opóźnienie 1 sekundy (1000 milisekund)
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        // Sprawdzenie wyniku walki
-//        if (hero.getHp() <= 0) {
-//            System.out.println("Przegrałeś");
-//        } else {
-//            System.out.println("Wygrałeś");
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
 }
