@@ -24,6 +24,7 @@ public class World {
                 Location.locationAction(Location.LocationFactory.crateMordor(), hero);
             }
             case 2->{
+                GameMethods.gameMenu(hero);
                 break;
             }
 

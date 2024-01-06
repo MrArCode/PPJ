@@ -3,7 +3,7 @@ package LOTR;
 
 public class Main {
     public static void main(String[] args) {
-//        GameMethods.startMenu();
+        GameMethods.startMenu();
 
 //        Thread musicThread = new Thread(() -> {
 //            Music musicPlayer = new Music();
@@ -14,12 +14,12 @@ public class Main {
 //        musicThread.start();
 
 
-        Character hero = Character.createHero();
+//        Character hero = Character.createHero();
 //        ArrayList<Monster> group = Monster.EnemyGroupGenerator.generateGroupOfEnemy(3,3);
 //        Battle.battle(hero,group);
 
 
-        GameMethods.gameMenu(hero);
+        //        GameMethods.gameMenu(hero);
 //        Character hero = Character.createHero();
 //        int dmg = ((Weapon)hero.getEquipment()[0]).getBaseDmg();
 //        System.out.println(dmg);
