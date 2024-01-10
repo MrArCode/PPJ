@@ -12,6 +12,7 @@ public class ThereAndBackAgain {
     public static void main(String[] args) {
         Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
         ThereAndBackAgain.story(hero);
+        //test
 
     }
 
