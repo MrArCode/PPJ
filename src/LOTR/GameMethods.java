@@ -104,6 +104,8 @@ public class GameMethods {
                 hero.showStats();
                 gameMenu(hero);
                 break;
+            case 5:
+                break;
             default:
                 gameMenu(hero);
         }

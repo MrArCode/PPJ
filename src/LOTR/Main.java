@@ -3,7 +3,7 @@ package LOTR;
 
 public class Main {
     public static void main(String[] args) {
-        GameMethods.startMenu();
+        GameMethods.gameMenu(Character.createHero());
 
 //        Thread musicThread = new Thread(() -> {
 //            Music musicPlayer = new Music();

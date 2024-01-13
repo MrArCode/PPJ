@@ -39,31 +39,31 @@ public class Character implements Serializable {
 
     // Method for showing hero's stats in a table format
     public void showStats() {
-        System.out.println("-------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.printf("| %-15s | %-15s |%n", "Attribute", "Value");
-        System.out.println("-------------------------------------");
-        System.out.printf("| %-15s | %-15s |%n", "Name", this.getName());
-        System.out.printf("| %-15s | %-15s |%n", "Race", this.getRace());
-        System.out.printf("| %-15s | %-15s |%n", "Weapon Skill", this.getWeaponSkill());
-        System.out.printf("| %-15s | %-15s |%n", "Ballistic Skill", this.getBallisticSkill());
-        System.out.printf("| %-15s | %-15s |%n", "Strength", this.getStrength());
-        System.out.printf("| %-15s | %-15s |%n", "Resistance", this.getResistance());
-        System.out.printf("| %-15s | %-15s |%n", "Dexterity", this.getDexterity());
-        System.out.printf("| %-15s | %-15s |%n", "Intelligence", this.getIntelligence());
-        System.out.printf("| %-15s | %-15s |%n", "Will Power", this.getWillPower());
-        System.out.printf("| %-15s | %-15s |%n", "Charisma", this.getCharisma());
-        System.out.printf("| %-15s | %-15s |%n", "Attack", this.getAttack());
-        System.out.printf("| %-15s | %-15s |%n", "Health", this.getHealth());
-        System.out.printf("| %-15s | %-15s |%n", "Magic", this.getMagic());
-        System.out.printf("| %-15s | %-15s |%n", "Mana", this.getMana());
-        System.out.println("-------------------------------------");
+        System.out.println("----------------------------------------");
+        System.out.printf("| %-15s | %-18s |%n", "Name", this.getName());
+        System.out.printf("| %-15s | %-18s |%n", "Race", this.getRace());
+        System.out.printf("| %-15s | %-18s |%n", "Weapon Skill", this.getWeaponSkill());
+        System.out.printf("| %-15s | %-18s |%n", "Ballistic Skill", this.getBallisticSkill());
+        System.out.printf("| %-15s | %-18s |%n", "Strength", this.getStrength());
+        System.out.printf("| %-15s | %-18s |%n", "Resistance", this.getResistance());
+        System.out.printf("| %-15s | %-18s |%n", "Dexterity", this.getDexterity());
+        System.out.printf("| %-15s | %-18s |%n", "Intelligence", this.getIntelligence());
+        System.out.printf("| %-15s | %-18s |%n", "Will Power", this.getWillPower());
+        System.out.printf("| %-15s | %-18s |%n", "Charisma", this.getCharisma());
+        System.out.printf("| %-15s | %-18s |%n", "Attack", this.getAttack());
+        System.out.printf("| %-15s | %-18s |%n", "Health", this.getHealth());
+        System.out.printf("| %-15s | %-18s |%n", "Magic", this.getMagic());
+        System.out.printf("| %-15s | %-18s |%n", "Mana", this.getMana());
+        System.out.println("----------------------------------------");
 
 
     }
     public static void barStats(Character hero){
-        System.out.println("======================================="+"\n" +
-                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+"\n"+
-                           "=======================================");
+        System.out.println("========================================"+"\n" +
+                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+" |" +"\n"+
+                           "========================================");
     }
 
 //======================================================================================================================

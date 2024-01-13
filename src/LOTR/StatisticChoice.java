@@ -24,21 +24,56 @@ public class StatisticChoice {
         System.out.print("Name: ");
         String name = scanner.next();
 
-        System.out.print("Race:\n" +
-                "1. Human\n" +
-                "2. Elf\n" +
-                "3. Dwarf\n" +
-                "4. Hobbit\n" +
-                "5. Maia\n" +
-                "Your choice: ");
 
-        String race = scanner.next().toLowerCase();
-        while (!race.equals("human") && !race.equals("elf") && !race.equals("dwarf") && !race.equals("hobbit") && !race.equals("maia")) {
-            System.out.println("Invalid choice. Please enter a valid race.");
-            race = scanner.next().toLowerCase();
+        int raceChoiceNumber;
+        String race = "";
+
+        while (true) {
+            System.out.print("Race:\n" +
+                    "1. Human\n" +
+                    "2. Elf\n" +
+                    "3. Dwarf\n" +
+                    "4. Hobbit\n" +
+                    "5. Maia\n" +
+                    "Your choice: ");
+
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+
+            raceChoiceNumber = scanner.nextInt();
+
+            if (raceChoiceNumber >= 1 && raceChoiceNumber <= 5) {
+                break;
+            } else {
+                System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+            }
         }
 
-        // Adjusting statistics based on the selected race.
+        switch (raceChoiceNumber) {
+            case 1:
+                race = "human";
+                break;
+            case 2:
+                race = "elf";
+                break;
+            case 3:
+                race = "dwarf";
+                break;
+            case 4:
+                race = "hobbit";
+                break;
+            case 5:
+                race = "maia";
+                break;
+            default:
+                break;
+        }
+
+        System.out.println("Selected race: " + race);
+
 
         switch (race) {
             case "human":
@@ -113,7 +148,7 @@ public class StatisticChoice {
             pointsDistributionChoice = scanner.nextInt();
         }
 
-        if (pointsDistributionChoice == 1){
+        if (pointsDistributionChoice == 1) {
 
             weaponSkill += random.nextInt(21);
             ballisticSkill += random.nextInt(21);
