@@ -28,8 +28,7 @@ public class Character implements Serializable {
 //======================================================================================================================
 
     public static Character createHero(){
-       Character hero = StatisticChoice.createCharacter();
-       hero.setProfession(CharacterProfession.chooseCharacterProfession());
+       Character hero = StatisticAndProfessionChoice.createCharacter();
        Equipment[] equipment = Equipment.startEquipmentOfHero(hero.profession);
        hero.setEquipment(equipment);
        return hero;
@@ -40,7 +39,7 @@ public class Character implements Serializable {
     // Method for showing hero's stats in a table format
     public void showStats() {
         System.out.println("----------------------------------------");
-        System.out.printf("| %-15s | %-15s |%n", "Attribute", "Value");
+        System.out.printf("| %-15s | %-18s |%n", "Attribute", "Value");
         System.out.println("----------------------------------------");
         System.out.printf("| %-15s | %-18s |%n", "Name", this.getName());
         System.out.printf("| %-15s | %-18s |%n", "Race", this.getRace());
@@ -61,11 +60,11 @@ public class Character implements Serializable {
 
     }
     public static void barStats(Character hero){
-        System.out.println("========================================"+"\n" +
-                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+" |" +"\n"+
-                           "========================================");
+        System.out.println("=========================================="+"\n" +
+                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+"   |" +"\n"+
+                           "==========================================");
     }
-
+    //TODO poprawic to bo sie rozjezdza
 //======================================================================================================================
     public void takeDamage(int damage) {
         if (damage > 0) {
