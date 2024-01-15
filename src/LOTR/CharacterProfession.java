@@ -127,7 +127,7 @@ public class CharacterProfession implements Serializable {
         }
 
         System.out.println("Congratulations, you have chosen your profession. " + profession.getName());
-
+        System.out.println();
 
         return profession;
     }

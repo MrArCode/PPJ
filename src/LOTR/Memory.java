@@ -58,7 +58,7 @@ public class Memory {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            GameMethods.intro(hero);
+            GameMethods.intro();
         }
     }
 }

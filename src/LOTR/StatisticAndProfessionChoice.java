@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StatisticAndProfessionChoice {
 
-    public static Character createHero() {
+    public static Character createCharacter() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
@@ -20,8 +20,8 @@ public class StatisticAndProfessionChoice {
         CharacterProfession profession;
 
         // Creation of hero
-
-        System.out.println("Hero creation");
+        System.out.println();
+        System.out.println("It is now the hour to create the protagonist, destined to traverse the realms of Middle-earth.");
 
         String name = chooseName(scanner);
         String race = chooseRace(scanner);
@@ -129,6 +129,7 @@ public class StatisticAndProfessionChoice {
     }
 
     public static void mainStatsChooseByPlayer(int[] mainStats, Scanner scanner, Random random) {
+        System.out.println();
         System.out.println("""
                 It's time to configure your character's statistics.\s
                 You have the option to either allocate a random amount of points\s
