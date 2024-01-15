@@ -28,7 +28,7 @@ public class Character implements Serializable {
 //======================================================================================================================
 
     public static Character createHero(){
-       Character hero = StatisticAndProfessionChoice.createCharacter();
+       Character hero = StatisticAndProfessionChoice.createHero();
        Equipment[] equipment = Equipment.startEquipmentOfHero(hero.profession);
        hero.setEquipment(equipment);
        return hero;

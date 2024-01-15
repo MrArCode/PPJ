@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class StatisticAndProfessionChoice {
 
-    public static Character createCharacter() {
+    public static Character createHero() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        int[] mainStats = new int[8];
+        int[] mainStats;
 
         int attack = 1;
         int health = 10;
@@ -26,9 +26,9 @@ public class StatisticAndProfessionChoice {
         String name = chooseName(scanner);
         String race = chooseRace(scanner);
         mainStats = mainStatsDistributionAccordingToRace(race);
-        mainStats = mainStatsChooseByPlayer(mainStats, scanner, random);
+        mainStatsChooseByPlayer(mainStats, scanner, random);
         profession = CharacterProfession.chooseCharacterProfession();
-        mainStats = mainPointsFromProfession(profession, mainStats);
+        mainPointsFromProfession(profession, mainStats);
 
         attack += profession.getAttack();
         health += profession.getHealth();
@@ -59,13 +59,14 @@ public class StatisticAndProfessionChoice {
         String race = "";
 
         while (true) {
-            System.out.print("Race:\n" +
-                    "1. Human\n" +
-                    "2. Elf\n" +
-                    "3. Dwarf\n" +
-                    "4. Hobbit\n" +
-                    "5. Maia\n" +
-                    "Your choice: ");
+            System.out.print("""
+                    Race:
+                    1. Human
+                    2. Elf
+                    3. Dwarf
+                    4. Hobbit
+                    5. Maia
+                    Your choice:\s""");
 
 
             while (!scanner.hasNextInt()) {
@@ -127,7 +128,7 @@ public class StatisticAndProfessionChoice {
         return mainStats;
     }
 
-    public static int[] mainStatsChooseByPlayer(int[] mainStats, Scanner scanner, Random random) {
+    public static void mainStatsChooseByPlayer(int[] mainStats, Scanner scanner, Random random) {
         System.out.println("""
                 It's time to configure your character's statistics.\s
                 You have the option to either allocate a random amount of points\s
@@ -156,7 +157,6 @@ public class StatisticAndProfessionChoice {
             }
         }
 
-        return mainStats;
     }
 
     private static int getUserInputInRange(Scanner scanner, String statName) {
@@ -169,7 +169,7 @@ public class StatisticAndProfessionChoice {
         return userInput;
     }
 
-    public static int[] mainPointsFromProfession(CharacterProfession profession, int[] mainStats) {
+    public static void mainPointsFromProfession(CharacterProfession profession, int[] mainStats) {
 
         mainStats[0] += profession.getWeaponSkill();
         mainStats[1] += profession.getBallisticSkill();
@@ -180,7 +180,6 @@ public class StatisticAndProfessionChoice {
         mainStats[6] += profession.getWillPower();
         mainStats[7] += profession.getCharisma();
 
-        return mainStats;
     }
 
 

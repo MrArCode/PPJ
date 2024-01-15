@@ -8,32 +8,45 @@ public class MeleeWeapon extends Weapon {
     }
 
     public static class MeleeWeaponFactory {
+        public static MeleeWeapon createDagger() {
+            return new MeleeWeapon("Dagger", "", generateRandomRarity(), 30, 1, 5, 0, 0);
+        }
+
         public static MeleeWeapon createShortSword() {
-            return new MeleeWeapon("Short Sword", "", generateRandomRarity(), 50, 2, 10,0,0);
+            return new MeleeWeapon("Short Sword", "", generateRandomRarity(), 50, 2, 10, 0, 0);
         }
 
         public static MeleeWeapon createLongSword() {
-            return new MeleeWeapon("Long Sword", "", generateRandomRarity(), 200, 5, 30,0,0);
+            return new MeleeWeapon("Long Sword", "", generateRandomRarity(), 200, 5, 30, 0, 0);
         }
 
         public static MeleeWeapon createMace() {
-            return new MeleeWeapon("Mace", "", generateRandomRarity(), 150, 4, 25,0,0);
+            return new MeleeWeapon("Mace", "", generateRandomRarity(), 150, 4, 25, 0, 0);
+        }
+
+        public static MeleeWeapon createWarhammer() {
+            return new MeleeWeapon("Warhammer", "", generateRandomRarity(), 180, 8, 60, 0, 0);
         }
 
         public static MeleeWeapon createBattleAxe() {
-            return new MeleeWeapon("Battle Axe", "", generateRandomRarity(), 220, 6, 40,0,0);
+            return new MeleeWeapon("Battle Axe", "", generateRandomRarity(), 220, 6, 40, 0, 0);
+        }
+
+        public static MeleeWeapon createGreataxe() {
+            return new MeleeWeapon("Greataxe", "", generateRandomRarity(), 280, 9, 60, 0, 0);
         }
 
         public static MeleeWeapon createSpear() {
-            return new MeleeWeapon("Spear", "", generateRandomRarity(), 200, 5, 45,0,0);
+            return new MeleeWeapon("Spear", "", generateRandomRarity(), 200, 5, 45, 0, 0);
         }
 
+
         public static MeleeWeapon createAeglos() {
-            return new MeleeWeapon("Aeglos", "", 4, 10000, 10, 60,0,0);
+            return new MeleeWeapon("Aeglos", "", 4, 10000, 10, 60, 0, 0);
         }
 
         public static MeleeWeapon createAnduril() {
-            return new MeleeWeapon("Andúril", "", 5, 100000, 15, 80,0,0);
+            return new MeleeWeapon("Andúril", "", 5, 100000, 15, 80, 0, 0);
         }
     }
 }

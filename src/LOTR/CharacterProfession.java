@@ -113,38 +113,17 @@ public class CharacterProfession implements Serializable {
         CharacterProfession profession = ClassFactory.defaultProfession();
 
         switch (choice) {
-            case 1:
-                profession = ClassFactory.archer();
-                break;
-            case 2:
-                profession = ClassFactory.barbarian();
-                break;
-            case 3:
-                profession = ClassFactory.beastlord();
-                break;
-            case 4:
-                profession = ClassFactory.druid();
-                break;
-            case 5:
-                profession = ClassFactory.knight();
-                break;
-            case 6:
-                profession = ClassFactory.mage();
-                break;
-            case 7:
-                profession = ClassFactory.paladin();
-                break;
-            case 8:
-                profession = ClassFactory.rogue();
-                break;
-            case 9:
-                profession = ClassFactory.warlock();
-                break;
-            case 10:
-                profession = ClassFactory.warrior();
-                break;
-            default:
-                break;
+            case 1 -> profession = ClassFactory.archer();
+            case 2 -> profession = ClassFactory.barbarian();
+            case 3 -> profession = ClassFactory.beastlord();
+            case 4 -> profession = ClassFactory.druid();
+            case 5 -> profession = ClassFactory.knight();
+            case 6 -> profession = ClassFactory.mage();
+            case 7 -> profession = ClassFactory.paladin();
+            case 8 -> profession = ClassFactory.rogue();
+            case 9 -> profession = ClassFactory.warlock();
+            case 10 -> profession = ClassFactory.warrior();
+
         }
 
         System.out.println("Congratulations, you have chosen your profession. " + profession.getName());
