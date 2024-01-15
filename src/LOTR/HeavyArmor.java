@@ -8,7 +8,7 @@ public class HeavyArmor extends Armor {
 
     public static class HeavyArmorFactory {
         public static HeavyArmor createHeavyArmor() {
-            return new HeavyArmor("Heavy Armor", "", generateRandomRarity(), 50, 5, 10, 10, 10);
+            return new HeavyArmor("Heavy Armor", "", generateRandomRarity(), 50, 5, 60, 0, 0);
         }
     }
 }

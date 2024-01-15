@@ -8,7 +8,7 @@ public class MediumArmor extends Armor{
     }
     public static class MediumArmorFactory {
         public static MediumArmor createMediumArmor() {
-            return new MediumArmor("Medium Armor", "", generateRandomRarity(), 50, 3, 10, 10, 10);
+            return new MediumArmor("Medium Armor", "", generateRandomRarity(), 50, 3, 40, 0, 0);
         }
     }
 }

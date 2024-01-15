@@ -8,7 +8,7 @@ public class MageArmor extends Armor {
 
     public static class MageArmorFactory {
         public static MageArmor createMageArmor() {
-            return new MageArmor("Heavy Armor", "", generateRandomRarity(), 50, 0, 10, 10, 10);
+            return new MageArmor("Magician's robes", "", generateRandomRarity(), 50, 0, 0, 0, 25);
         }
     }
 }
