@@ -59,10 +59,6 @@ public class Location {
 
 
     public static void locationAction(Location location, Character hero) {
-
-
-        System.out.println("You come to " + location.getName());
-        System.out.println("Choose your action");
         locationMenu(location, hero);
 
         //TODO TUTAj do poporwy te ewnty
@@ -75,7 +71,9 @@ public class Location {
         Scanner scanner = new Scanner(System.in);
 
         switch (location.getName()){
-            case "Mordor", "Isengard": {
+            case "Mordor", "Isengard","Erebor": {
+                System.out.println("You come to " + location.getName());
+                System.out.println("Choose your action: ");
                 System.out.println("""
                         1. Hunt for the enemies
                         2. Search for Hidden Riches
@@ -85,17 +83,20 @@ public class Location {
                 switch (choice){
                     case 1 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 2 :{
-                        //TODO Cos tu ma byc
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 3:{
                         World.mapMenu(hero);
                     }
                 }
             }
-            case "Minas Tirith","Rohan","Fangorn Forest","Bree":{
+            case "Minas Tirith","Rohan","Fangorn Forest":{
+                System.out.println("You come to " + location.getName());
+                System.out.println("Choose your action: ");
                 System.out.println("""
                         1. Hunt for the enemies
                         2. Search for Hidden Riches
@@ -106,16 +107,20 @@ public class Location {
                 switch (choice){
                     case 1 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 2 :{
                         //TODO Cos tu ma byc
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 3 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 4 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 5:{
                         World.mapMenu(hero);
@@ -124,6 +129,8 @@ public class Location {
 
             }
             case "Shire", "Lothlorien", "Rivendell":{
+                System.out.println("You come to " + location.getName());
+                System.out.println("Choose your action: ");
                 System.out.println("""
                         1. Hunt for the enemies
                         2. Trade with locals
@@ -133,13 +140,16 @@ public class Location {
                 switch (choice){
                     case 1 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 2 :{
                         //TODO Cos tu ma byc
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 3 :{
                         HuntForTheEnemies(hero);
+                        locationMenu(location,hero);
                     }
                     case 4:{
                         World.mapMenu(hero);

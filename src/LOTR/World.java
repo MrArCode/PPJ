@@ -5,57 +5,53 @@ import java.util.Scanner;
 public class World {
 
 
-
-
-
-
-    public static void mapMenu(Character hero){
+    public static void mapMenu(Character hero) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("This is Middle-Earth, where would you like to travel?");
         showMap();
+        System.out.println("This is Middle-Earth, where would you like to travel?");
         System.out.println("" +
                 "1.Mordor" +
-                "2.Erebor" +
-                "3.Minas Tirith" +
-                "4.Rohan" +
-                "5.Isengard" +
-                "6.Fangorn Forest" +
-                "7.Lothlorien" +
-                "8.Rivendell" +
-                "9.Shire" +
-                "10.Return to main menu" +
-                "Type a number: ");
+                "\n2.Erebor" +
+                "\n3.Minas Tirith" +
+                "\n4.Rohan" +
+                "\n5.Isengard" +
+                "\n6.Fangorn Forest" +
+                "\n7.Lothlorien" +
+                "\n8.Rivendell" +
+                "\n9.Shire" +
+                "\n10.Return to main menu" +
+                "\nType a number: ");
         int choice = scanner.nextInt();
-        switch (choice){
-            case 1 ->{
+        switch (choice) {
+            case 1 -> {
                 Location.locationAction(Location.LocationFactory.crateMordor(), hero);
             }
-            case 2 ->{
+            case 2 -> {
                 Location.locationAction(Location.LocationFactory.createErebor(), hero);
             }
-            case 3 ->{
+            case 3 -> {
                 Location.locationAction(Location.LocationFactory.createMinasTirith(), hero);
             }
-            case 4 ->{
+            case 4 -> {
                 Location.locationAction(Location.LocationFactory.createRohan(), hero);
             }
-            case 5 ->{
+            case 5 -> {
                 Location.locationAction(Location.LocationFactory.createIsengard(), hero);
             }
-            case 6 ->{
+            case 6 -> {
                 Location.locationAction(Location.LocationFactory.createFangornForest(), hero);
             }
-            case 7 ->{
+            case 7 -> {
                 Location.locationAction(Location.LocationFactory.createLothlorien(), hero);
             }
-            case 8 ->{
+            case 8 -> {
                 Location.locationAction(Location.LocationFactory.createRivendell(), hero);
             }
-            case 9 ->{
+            case 9 -> {
                 Location.locationAction(Location.LocationFactory.createShire(), hero);
             }
-            case 10->{
+            case 10 -> {
                 GameMethods.gameMenu(hero);
                 break;
             }
