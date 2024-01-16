@@ -11,10 +11,34 @@ public class Event {
         this.location = location;
     }
 
-    public static void randomEventsForEachLocation(Location location, Character hero){
+    public static void randomEventsForEachLocationWhenEntering(Location location, Character hero){
         switch (location.getName()){
             case "Mordor" ->{
                 Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,1));
+            }
+            case "Erebor" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,2));
+            }
+            case "Minas Tirith" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,3));
+            }
+            case "Rohan" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,4));
+            }
+            case "Isengard" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,5));
+            }
+            case "Fangorn Forest" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,6));
+            }
+            case "Lothlorien" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,7));
+            }
+            case "Rivendell" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,8));
+            }
+            case "Shire" ->{
+                Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,9));
             }
         }
 

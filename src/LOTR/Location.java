@@ -1,5 +1,7 @@
 package LOTR;
 
+import java.util.Scanner;
+
 public class Location {
     private String name;
     private String description;
@@ -15,22 +17,141 @@ public class Location {
         public static Location crateMordor() {
             return new Location("Mordor", "");
         }
+
+        public static Location createErebor() {
+            return new Location("Erebor", "");
+        }
+
+        public static Location createMinasTirith() {
+            return new Location("Minas Tirith", "");
+        }
+
+        public static Location createRohan() {
+            return new Location("Rohan", "");
+        }
+
+        public static Location createIsengard() {
+            return new Location("Isengard", "");
+        }
+
+        public static Location createFangornForest() {
+            return new Location("Fangorn Forest", "");
+        }
+
+        public static Location createLothlorien() {
+            return new Location("Lothlorien", "");
+        }
+
+        public static Location createRivendell() {
+            return new Location("Rivendell", "");
+        }
+
+        public static Location createBree() {
+            return new Location("Bree", "");
+        }
+
+        public static Location createShire() {
+            return new Location("Shire", "");
+        }
+
+
     }
 
 
+    public static void locationAction(Location location, Character hero) {
 
 
+        System.out.println("You come to " + location.getName());
+        System.out.println("Choose your action");
+        locationMenu(location, hero);
 
-
-
-    public static void locationAction(Location location, Character hero){
-        System.out.println("You come to dark land of " + location.getName());
-        Event.randomEventsForEachLocation(location, hero);
+        //TODO TUTAj do poporwy te ewnty
+        //Event.randomEventsForEachLocationWhenEntering(location, hero);
     }
 
 
+    public static void locationMenu(Location location, Character hero){
 
+        Scanner scanner = new Scanner(System.in);
 
+        switch (location.getName()){
+            case "Mordor", "Isengard": {
+                System.out.println("""
+                        1. Hunt for the enemies
+                        2. Search for Hidden Riches
+                        3. Return to the Unexplored Lands
+                        """);
+                int choice = scanner.nextInt();
+                switch (choice){
+                    case 1 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 2 :{
+                        //TODO Cos tu ma byc
+                        HuntForTheEnemies(hero);
+                    }
+                    case 3:{
+                        World.mapMenu(hero);
+                    }
+                }
+            }
+            case "Minas Tirith","Rohan","Fangorn Forest","Bree":{
+                System.out.println("""
+                        1. Hunt for the enemies
+                        2. Search for Hidden Riches
+                        3. Trade with locals
+                        4. Look for some adventure
+                        5. Return to the Unexplored Lands""");
+                int choice = scanner.nextInt();
+                switch (choice){
+                    case 1 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 2 :{
+                        //TODO Cos tu ma byc
+                        HuntForTheEnemies(hero);
+                    }
+                    case 3 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 4 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 5:{
+                        World.mapMenu(hero);
+                    }
+                }
+
+            }
+            case "Shire", "Lothlorien", "Rivendell":{
+                System.out.println("""
+                        1. Hunt for the enemies
+                        2. Trade with locals
+                        3. Look for some adventure
+                        4. Return to the Unexplored Lands""");
+                int choice = scanner.nextInt();
+                switch (choice){
+                    case 1 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 2 :{
+                        //TODO Cos tu ma byc
+                        HuntForTheEnemies(hero);
+                    }
+                    case 3 :{
+                        HuntForTheEnemies(hero);
+                    }
+                    case 4:{
+                        World.mapMenu(hero);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void HuntForTheEnemies(Character hero){
+        Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,1));
+    }
 
 
     public String getName() {

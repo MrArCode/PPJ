@@ -4,8 +4,8 @@ package LOTR;
 public class Main {
     public static void main(String[] args) {
 
-        GameMethods.playTheGame();
-
+//        GameMethods.playTheGame();
+            World.showMap();
 
 //        Thread musicThread = new Thread(() -> {
 //            Music musicPlayer = new Music();
