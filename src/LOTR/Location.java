@@ -160,7 +160,7 @@ public class Location {
     }
 
     public static void HuntForTheEnemies(Character hero){
-        Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfEnemy(1,1));
+        Battle.battle(hero, Monster.EnemyGroupGenerator.generateGroupOfGoblins(1,1));
     }
 
 

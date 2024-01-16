@@ -60,7 +60,7 @@ public class Equipment {
     //2.armor
     //3.gold
 
-    public static Equipment[] monsterEquipment(String name){
+    public static Equipment[] goblinEquipment(String name){
         Equipment[] monsterEquipment = new Equipment[3];
         switch (name){
             case "Goblin Miner" -> {
