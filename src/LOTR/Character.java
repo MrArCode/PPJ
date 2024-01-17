@@ -1,6 +1,8 @@
 package LOTR;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Character implements Serializable {
     private String name;
@@ -24,14 +26,18 @@ public class Character implements Serializable {
 
     private Equipment[] equipment;
 
+    private int experience;
+    private int level;
+    private int levelPointAmount;
+
 
 //======================================================================================================================
 
-    public static Character createHero(){
-       Character hero = StatisticAndProfessionChoice.createCharacter();
-       Equipment[] equipment = Equipment.startEquipmentOfHero(hero.profession);
-       hero.setEquipment(equipment);
-       return hero;
+    public static Character createHero() {
+        Character hero = StatisticAndProfessionChoice.createCharacter();
+        Equipment[] equipment = Equipment.startEquipmentOfHero(hero.profession);
+        hero.setEquipment(equipment);
+        return hero;
     }
 
 //======================================================================================================================
@@ -55,15 +61,18 @@ public class Character implements Serializable {
         System.out.printf("| %-15s | %-18s |%n", "Health", this.getHealth());
         System.out.printf("| %-15s | %-18s |%n", "Magic", this.getMagic());
         System.out.printf("| %-15s | %-18s |%n", "Mana", this.getMana());
+        System.out.printf("| %-15s | %-18s |%n", "Level", this.getLevel());
         System.out.println("----------------------------------------");
 
 
     }
-    public static void barStats(Character hero){
-        System.out.println("=========================================="+"\n" +
-                           "Name: "+hero.name+" The "+hero.race+" | HP: "+hero.health+" | Attack: "+hero.attack+"   |" +"\n"+
-                           "==========================================");
+
+    public static void barStats(Character hero) {
+        System.out.println("==========================================" + "\n" +
+                "Name: " + hero.name + " The " + hero.race + " | HP: " + hero.health + " | Attack: " + hero.attack + "   |" + "\n" +
+                "==========================================");
     }
+
     //TODO poprawic to bo sie rozjezdza
 //======================================================================================================================
     public void takeDamage(int damage) {
@@ -94,11 +103,70 @@ public class Character implements Serializable {
         this.mana = mana;
         this.profession = profession;
         this.equipment = equipment;
+        this.experience = 0;
+        this.level = 1;
+        this.levelPointAmount = 0;
     }
 
 //======================================================================================================================
 
-    // Setters and getters
+    public static void checkLevelPossibility(Character hero) {
+        if (hero.getExperience() > hero.getLevel() * 500) {
+            hero.setLevel(hero.getLevel() + 1);
+            hero.setLevelPointAmount((hero.getLevelPointAmount() + 10));
+        }
+    }
+
+    public static void gainExperience(Character hero, ArrayList<Monster> monsters) {
+        int expToGain = 0;
+        for (Monster monster : monsters) expToGain += monster.getExpToGive();
+        hero.setExperience(expToGain);
+    }
+
+    public static void levelRemainder(Character hero){
+        if(hero.getLevelPointAmount() > 0){
+            System.out.println("You have points to spent");
+        }
+
+    }
+
+    public static void pointsDistribution(Character hero){
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("These are yours statistic");
+        hero.showStats();
+        System.out.println("You have " + hero.getLevelPointAmount() + " to spent");
+
+
+    }
+
+    public static void levelUpMenu(Character hero) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("""
+                Welcome, to the Chamber of Progress!
+                1. Gaze upon your mighty statistics
+                2. Distribute your precious level points
+                3. Return to main menu
+                Your choice:
+                """);
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1: {
+                hero.showStats();
+                Character.levelUpMenu(hero);
+
+            }
+            case 2: {
+                pointsDistribution(hero);
+                //TODO dokon xD
+            }
+            case 3: {
+                GameMethods.gameMenu(hero);
+            }
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -225,6 +293,30 @@ public class Character implements Serializable {
 
     public void setEquipment(Equipment[] equipment) {
         this.equipment = equipment;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevelPointAmount() {
+        return levelPointAmount;
+    }
+
+    public void setLevelPointAmount(int levelPointAmount) {
+        this.levelPointAmount = levelPointAmount;
     }
 }
 

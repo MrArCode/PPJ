@@ -92,7 +92,7 @@ public class Monster extends Character {
         }
 
         public static Monster createOrcSniper() {
-            return new Monster("Orc Sniper", "orc", 15, 50, 20, 10, 30, 0, 0, 1, 6, 0, 0, null, 55);
+            return new Monster("Orc Spearman", "orc", 15, 50, 20, 10, 30, 0, 0, 1, 6, 0, 0, null, 55);
         }
 
         public static Monster createOrcExecutioner() {

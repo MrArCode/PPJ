@@ -48,8 +48,7 @@ public class Equipment {
                 startEquipmentOfHero[2] = HpElixir.HpElixirFactory.createHpElixir();
                 startEquipmentOfHero[3] = Gold.GoldFactory.createGoldCoins100();
             }
-            default ->
-                    throw new IllegalStateException("Unexpected value: " + characterProfession.getName());
+            default -> throw new IllegalStateException("Unexpected value: " + characterProfession.getName());
         }
 
         return startEquipmentOfHero;
@@ -60,55 +59,45 @@ public class Equipment {
     //2.armor
     //3.gold
 
-    public static Equipment[] goblinEquipment(String name){
+    public static Equipment[] goblinEquipment(String name) {
         Equipment[] monsterEquipment = new Equipment[3];
-        switch (name){
-            case "Goblin Miner" -> {
+        switch (name) {
+            case "Goblin Miner", "Orc Warrior", "Goblin Scout", "Orc Assassin" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createShortSword();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Scout" -> {
-                monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createShortSword();
-                monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
-                monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
-            }
-            case "Goblin Skirmisher" -> {
+            case "Goblin Skirmisher", "Orc Berserker" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createBattleAxe();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Warrior" -> {
+            case "Goblin Warrior", "Orc Defender" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createLongSword();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Spearman" -> {
+            case "Goblin Spearman", "Orc Spearman" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createSpear();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Archer" -> {
+            case "Goblin Archer", "Orc Archer" -> {
                 monsterEquipment[0] = RangeWeapon.RangeWeaponFactory.createBow();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Shaman" -> {
+            case "Goblin Shaman", "Orc Shaman" -> {
                 monsterEquipment[0] = MagicWeapon.MagicWeaponFactory.createStaff();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Drummer" -> {
+            case "Goblin Drummer", "Orc Sorcerer" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createMace();
                 monsterEquipment[1] = LightArmor.LightArmorFactory.createLightArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins100();
             }
-            case "Goblin Chief" -> {
-                monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createLongSword();
-                monsterEquipment[1] = HeavyArmor.HeavyArmorFactory.createHeavyArmor();
-                monsterEquipment[2] = Gold.GoldFactory.createGoldCoins1000();
-            }
-            case "Cave Troll" -> {
+            case "Goblin Chief", "Orc Chieftain", "Cave Troll", "Orc Executioner" -> {
                 monsterEquipment[0] = MeleeWeapon.MeleeWeaponFactory.createLongSword();
                 monsterEquipment[1] = HeavyArmor.HeavyArmorFactory.createHeavyArmor();
                 monsterEquipment[2] = Gold.GoldFactory.createGoldCoins1000();

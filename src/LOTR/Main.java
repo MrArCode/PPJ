@@ -4,8 +4,16 @@ package LOTR;
 public class Main {
     public static void main(String[] args) {
 
-        GameMethods.playTheGame();
+//        GameMethods.playTheGame();
+//        Level.levelMenuChoice();
 //            World.showMap();
+      Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
+      Character.levelUpMenu(hero);
+
+//        Monster monster = Monster.GoblinFactory.createGoblinArcher();
+//        System.out.println(monster.getLevel());
+
+
 
 //        Thread musicThread = new Thread(() -> {
 //            Music musicPlayer = new Music();
