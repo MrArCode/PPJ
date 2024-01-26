@@ -1,5 +1,7 @@
 package LOTR;
 
+import java.util.Scanner;
+
 public class Equipment {
 
     //1.weapon
@@ -105,4 +107,32 @@ public class Equipment {
         }
         return monsterEquipment;
     }
+
+
+    public static void heroEquipmentMenu(Character hero) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("""
+                1. Show yours equipment
+                2. Return to main menu
+                Your choice:
+                """);
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1: {
+                System.out.println("1. Weapon - " + ((Weapon)hero.getEquipment()[0]).getName());
+                System.out.println("2. Armor - " + ((Armor)hero.getEquipment()[1]).getName());
+                System.out.println("3. Elixir - " + ((Elixir)hero.getEquipment()[2]).getName());
+                System.out.println("4. Gold - " + ((Gold)hero.getEquipment()[3]).getAmount());
+                //TODO tu trzeba dodac jak beda itemy other
+                Equipment.heroEquipmentMenu(hero);
+            }
+            case 2: {
+                GameMethods.gameMenu(hero);
+            }
+        }
+    }
+
 }
+
+
+

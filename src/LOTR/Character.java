@@ -61,16 +61,18 @@ public class Character implements Serializable {
         System.out.printf("| %-15s | %-18s |%n", "Health", this.getHealth());
         System.out.printf("| %-15s | %-18s |%n", "Magic", this.getMagic());
         System.out.printf("| %-15s | %-18s |%n", "Mana", this.getMana());
+        System.out.printf("| %-15s | %-18s |%n", "Experience", this.getExperience());
         System.out.printf("| %-15s | %-18s |%n", "Level", this.getLevel());
+        System.out.printf("| %-15s | %-18s |%n", "Level Points", this.getLevelPointAmount());
         System.out.println("----------------------------------------");
 
 
     }
 
     public static void barStats(Character hero) {
-        System.out.println("==========================================" + "\n" +
-                "Name: " + hero.name + " The " + hero.race + " | HP: " + hero.health + " | Attack: " + hero.attack + "   |" + "\n" +
-                "==========================================");
+        System.out.println("=====================================================" + "\n" +
+                "Name: " + hero.name + " The " + hero.race + " | HP: " + hero.health + " | Attack: " + ((Weapon) hero.getEquipment()[0]).getBaseDmg() + " | Armor: " + ((Armor) hero.getEquipment()[1]).getDefense() + "   |" + "\n" +
+                "=====================================================");
     }
 
     //TODO poprawic to bo sie rozjezdza
@@ -143,22 +145,27 @@ public class Character implements Serializable {
 
                 System.out.println("Which statistic would you like to develop? ");
                 System.out.println("""
-                        Basic skills:
-                        1. Weapon Skill
-                        2. Ballistic Skill 
-                        3. Strength
-                        4. Resistance
-                        5. Dexterity
-                        6. Intelligence 
-                        7. Willpower
-                        8. Charisma
-                                            
-                        Advanced skills:
-                        9. Attack
-                        10. Health
-                        11. Magic
-                        12. Mana\n
+                        +----------------------+
+                        | Basic skills         |
+                        +----------------------+
+                        | 1. Weapon Skill      |
+                        | 2. Ballistic Skill   |
+                        | 3. Strength          |
+                        | 4. Resistance        |
+                        | 5. Dexterity         |
+                        | 6. Intelligence      |
+                        | 7. Willpower         |
+                        | 8. Charisma          |
+                        +----------------------+
+                        | Advanced skills      |
+                        +----------------------+
+                        | 9. Attack            |
+                        |10. Health            |
+                        |11. Magic             |
+                        |12. Mana              |
+                        +----------------------+
                         """);
+
                 System.out.println("Your choice: ");
                 int chosenStatistic = scanner.nextInt();
 

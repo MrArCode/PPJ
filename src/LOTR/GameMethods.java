@@ -48,7 +48,7 @@ public class GameMethods {
     public static void startMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("MENU GŁÓWNE" + "\n" +
-                "[1] Wczytaj grę" + "\n" +
+                "[1] Wczytaj grę(Nie działa)" + "\n" +
                 "[2] Nowa gra" + "\n" +
                 "[3] Wyjdź");
         int choice = -1;
@@ -62,20 +62,21 @@ public class GameMethods {
         sc.nextLine();
         switch (choice) {
             case 1:
-                try {
-                    Memory.loadGame();
-                } catch (IOException | ClassNotFoundException e) {
-                    System.out.println("Brak zapisów");
-                    startMenu();
-                }
-                break;
+//                try {
+//                    Memory.loadGame();
+//                } catch (IOException | ClassNotFoundException e) {
+//                    System.out.println("Brak zapisów");
+//                    startMenu();
+//                }
+                startMenu();
             case 2:
-                try {
-                    Memory.createNewGame();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
+//                try {
+//                    Memory.createNewGame();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+                playTheGame();
+
 
             case 3:
                 System.out.println("Logging out...");
@@ -101,9 +102,9 @@ public class GameMethods {
             case 1:
                 mapMenu(hero);
                 gameMenu(hero);
-                break;
             case 2:
-                break;
+                Equipment.heroEquipmentMenu(hero);
+                gameMenu(hero);
             case 3:
                 Character.levelUpMenu(hero);
                 gameMenu(hero);

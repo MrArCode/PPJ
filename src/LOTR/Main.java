@@ -4,10 +4,19 @@ package LOTR;
 public class Main {
     public static void main(String[] args) {
 
-//        GameMethods.playTheGame();
-        Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
-        hero.setLevelPointAmount(5);
-        Character.levelUpMenu(hero);
+
+//        Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
+//        hero.setLevelPointAmount(5);
+//        Character.levelUpMenu(hero);
+
+        GameMethods.playTheGame();
+
+
+
+
+
+
+
 //            World.showMap();
 //      Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
 //      Character.levelUpMenu(hero);
