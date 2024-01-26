@@ -5,13 +5,12 @@ public class Main {
     public static void main(String[] args) {
 
 //        GameMethods.playTheGame();
-//        Level.levelMenuChoice();
+        Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
+        hero.setLevelPointAmount(5);
+        Character.levelUpMenu(hero);
 //            World.showMap();
-      Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
-      Character.levelUpMenu(hero);
-
-//        Monster monster = Monster.GoblinFactory.createGoblinArcher();
-//        System.out.println(monster.getLevel());
+//      Character hero = new Character("Artur", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
+//      Character.levelUpMenu(hero);
 
 
 

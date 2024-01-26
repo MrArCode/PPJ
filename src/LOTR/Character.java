@@ -123,49 +123,122 @@ public class Character implements Serializable {
         hero.setExperience(expToGain);
     }
 
-    public static void levelRemainder(Character hero){
-        if(hero.getLevelPointAmount() > 0){
+    public static void levelRemainder(Character hero) {
+        if (hero.getLevelPointAmount() > 0) {
             System.out.println("You have points to spent");
         }
 
     }
 
-    public static void pointsDistribution(Character hero){
+    public static void levelUpStats(Character hero) {
         Scanner scanner = new Scanner(System.in);
 
+        if (hero.getLevelPointAmount() == 0) {
+            System.out.println("You have 0 points to spend");
+            Character.levelUpMenu(hero);
+        } else {
+            while (hero.getLevelPointAmount() > 0) {
+                System.out.println("These are your statistics:");
+                hero.showStats();
+                System.out.println("You have " + hero.getLevelPointAmount() + " points to spend");
 
-        System.out.println("These are yours statistic");
-        hero.showStats();
-        System.out.println("You have " + hero.getLevelPointAmount() + " to spent");
+                System.out.println("Which statistic would you like to develop? ");
+                System.out.println("""
+                        Basic skills:
+                        1. Weapon Skill
+                        2. Ballistic Skill 
+                        3. Strength
+                        4. Resistance
+                        5. Dexterity
+                        6. Intelligence 
+                        7. Willpower
+                        8. Charisma
+                                            
+                        Advanced skills:
+                        9. Attack
+                        10. Health
+                        11. Magic
+                        12. Mana\n
+                        """);
+                System.out.println("Your choice: ");
+                int chosenStatistic = scanner.nextInt();
 
+                System.out.println("How many points would you like to spend?");
+                System.out.println("Type the amount: ");
+                int howManyPoints = scanner.nextInt();
 
+                while (howManyPoints <= 0 || howManyPoints > hero.getLevelPointAmount()) {
+                    System.out.println("Type a valid amount");
+                    System.out.println("Type the amount: ");
+                    howManyPoints = scanner.nextInt();
+                }
+
+                updateStatistic(hero, chosenStatistic, howManyPoints);
+            }
+        }
+
+        System.out.println("Congratulations! You spent all your free points");
+        System.out.println();
+    }
+
+    private static void updateStatistic(Character hero, int chosenStatistic, int howManyPoints) {
+        final int STAT_INCREMENT = 5;
+
+        switch (chosenStatistic) {
+            case 1 -> hero.setWeaponSkill(hero.getWeaponSkill() + howManyPoints * STAT_INCREMENT);
+            case 2 -> hero.setBallisticSkill(hero.getBallisticSkill() + howManyPoints * STAT_INCREMENT);
+            case 3 -> hero.setStrength(hero.getStrength() + howManyPoints * STAT_INCREMENT);
+            case 4 -> hero.setResistance(hero.getResistance() + howManyPoints * STAT_INCREMENT);
+            case 5 -> hero.setDexterity(hero.getDexterity() + howManyPoints * STAT_INCREMENT);
+            case 6 -> hero.setIntelligence(hero.getIntelligence() + howManyPoints * STAT_INCREMENT);
+            case 7 -> hero.setWillPower(hero.getWillPower() + howManyPoints * STAT_INCREMENT);
+            case 8 -> hero.setCharisma(hero.getCharisma() + howManyPoints * STAT_INCREMENT);
+            case 9 -> hero.setAttack(hero.getAttack() + howManyPoints);
+            case 10 -> hero.setHealth(hero.getHealth() + howManyPoints);
+            case 11 -> hero.setMagic(hero.getMagic() + howManyPoints);
+            case 12 -> hero.setMana(hero.getMana() + howManyPoints);
+        }
+
+        hero.setLevelPointAmount(hero.getLevelPointAmount() - howManyPoints);
     }
 
     public static void levelUpMenu(Character hero) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("""
-                Welcome, to the Chamber of Progress!
+        System.out.print("""
                 1. Gaze upon your mighty statistics
                 2. Distribute your precious level points
-                3. Return to main menu
+                3. Information about points distribution
+                4. Return to main menu
                 Your choice:
                 """);
         int choice = scanner.nextInt();
         switch (choice) {
             case 1: {
+                System.out.println("These are yours statistics");
                 hero.showStats();
                 Character.levelUpMenu(hero);
 
             }
             case 2: {
-                pointsDistribution(hero);
-                //TODO dokon xD
+                levelUpStats(hero);
+                Character.levelUpMenu(hero);
             }
             case 3: {
+                System.out.println("""
+                        One point can be spent to develop basic statistic (+5) or advanced one (+1).
+                        1. Basic skills are: weapon skills, ballistic skills, strength, resistance, dexterity, intelligence, willpower, charisma
+                        2. Advanced skills are: attack, health, magic, mana
+                                                
+                        """);
+                Character.levelUpMenu(hero);
+
+            }
+            case 4: {
                 GameMethods.gameMenu(hero);
             }
         }
     }
+
 
     public String getName() {
         return name;
