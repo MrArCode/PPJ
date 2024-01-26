@@ -20,8 +20,10 @@ public class Battle {
 
         if (hero.getHealth() <= 0) {
             System.out.println("You are dead, not big surprise");
+            GameMethods.endOfTheGameAndReturnToMainMenu();
         } else {
             System.out.println("Congratulations! You have defeated all enemies.");
+            Character.checkLevelPossibility(hero);
         }
     }
 
@@ -103,6 +105,9 @@ public class Battle {
 
             if (monsters.get(attackedEnemy).getHealth() <= 0) {
                 System.out.println("You killed " + monsters.get(attackedEnemy).getName());
+
+                //Tu moga byc problemy
+                Character.gainExperience(hero, monsters.get(attackedEnemy));
                 monsters.remove(attackedEnemy);
             }
         } else {

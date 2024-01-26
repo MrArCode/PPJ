@@ -113,21 +113,20 @@ public class Character implements Serializable {
     public static void checkLevelPossibility(Character hero) {
         if (hero.getExperience() > hero.getLevel() * 500) {
             hero.setLevel(hero.getLevel() + 1);
-            hero.setLevelPointAmount((hero.getLevelPointAmount() + 10));
+            hero.setLevelPointAmount((hero.getLevelPointAmount() + 1));
         }
-    }
-
-    public static void gainExperience(Character hero, ArrayList<Monster> monsters) {
-        int expToGain = 0;
-        for (Monster monster : monsters) expToGain += monster.getExpToGive();
-        hero.setExperience(expToGain);
+        levelRemainder(hero);
     }
 
     public static void levelRemainder(Character hero) {
         if (hero.getLevelPointAmount() > 0) {
-            System.out.println("You have points to spent");
+            System.out.println("---!!! You have points to spent !!!---");
         }
 
+    }
+
+    public static void gainExperience(Character hero, Monster monster) {
+        hero.setExperience(hero.getExperience() + monster.getExpToGive());
     }
 
     public static void levelUpStats(Character hero) {

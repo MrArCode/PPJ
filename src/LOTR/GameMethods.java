@@ -15,7 +15,6 @@ public class GameMethods {
         gameMenu(hero);
     }
 
-    //Menu do tworzenia postaci i prolog
     public static void intro() {
         Scanner scanner = new Scanner(System.in);
 
@@ -39,6 +38,11 @@ public class GameMethods {
         scanner.nextLine();
     }
 
+    public static void endOfTheGameAndReturnToMainMenu(){
+        System.out.println("GAME OVER");
+
+        //TODO rozbudowac i napisac cale menu
+    }
 
     //Menu początkowe na starcie gry (ma być inne menu w trakcie gry)
     public static void startMenu() {
@@ -89,7 +93,7 @@ public class GameMethods {
         System.out.println("WYBIERZ DZIAŁANIE: ");
         System.out.println("[1] MAPA" + "\n" +
                 "[2] EKWIPUNEK" + "\n" +
-                "[3] STATYSTYKI" + "\n" +
+                "[3] STATYSTYKI I LEVELOWANIE" + "\n" +
                 "[4] ZAPISZ" + "\n" +
                 "[5] WYJDŹ" + "\n");
         int choice = sc.nextInt();
@@ -101,7 +105,7 @@ public class GameMethods {
             case 2:
                 break;
             case 3:
-                hero.showStats();
+                Character.levelUpMenu(hero);
                 gameMenu(hero);
                 break;
             case 5:
