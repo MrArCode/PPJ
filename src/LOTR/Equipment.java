@@ -2,6 +2,9 @@ package LOTR;
 
 import java.util.Scanner;
 
+/**
+ * The Equipment class represents the equipment of characters and monsters in the game.
+ */
 public class Equipment {
 
     //1.weapon
@@ -10,6 +13,12 @@ public class Equipment {
     //4.gold
     //5.other
 
+    /**
+     * Generates the starting equipment for a hero based on their character profession.
+     *
+     * @param characterProfession The profession of the hero.
+     * @return An array of Equipment representing the starting equipment for the hero.
+     */
     public static Equipment[] startEquipmentOfHero(CharacterProfession characterProfession) {
         Equipment[] startEquipmentOfHero = new Equipment[5];
 
@@ -56,11 +65,16 @@ public class Equipment {
         return startEquipmentOfHero;
     }
 
-
     //1.weapon
     //2.armor
     //3.gold
 
+    /**
+     * Generates the equipment for a goblin or orc monster based on its name.
+     *
+     * @param name The name of the goblin or orc monster.
+     * @return An array of Equipment representing the equipment for the monster.
+     */
     public static Equipment[] goblinEquipment(String name) {
         Equipment[] monsterEquipment = new Equipment[3];
         switch (name) {
@@ -109,29 +123,49 @@ public class Equipment {
     }
 
 
+    /**
+     * Displays the hero's equipment menu and handles user input to show equipment details
+     * or return to the main menu.
+     *
+     * @param hero The character for which the equipment menu is displayed.
+     */
     public static void heroEquipmentMenu(Character hero) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("""
-                1. Show yours equipment
-                2. Return to main menu
-                Your choice:
-                """);
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1: {
-                System.out.println("1. Weapon - " + ((Weapon)hero.getEquipment()[0]).getName());
-                System.out.println("2. Armor - " + ((Armor)hero.getEquipment()[1]).getName());
-                System.out.println("3. Elixir - " + ((Elixir)hero.getEquipment()[2]).getName());
-                System.out.println("4. Gold - " + ((Gold)hero.getEquipment()[3]).getAmount());
-                //TODO tu trzeba dodac jak beda itemy other
-                Equipment.heroEquipmentMenu(hero);
+
+        try {
+            System.out.print("""
+                    1. Show your equipment
+                    2. Return to the main menu
+                    Your choice:
+                    """);
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1: {
+                    System.out.println("1. Weapon - " + ((Weapon) hero.getEquipment()[0]).getName());
+                    System.out.println("2. Armor - " + ((Armor) hero.getEquipment()[1]).getName());
+                    System.out.println("3. Elixir - " + ((Elixir) hero.getEquipment()[2]).getName());
+                    System.out.println("4. Gold - " + ((Gold) hero.getEquipment()[3]).getAmount());
+
+                    Equipment.heroEquipmentMenu(hero);
+                    break;
+                }
+                case 2: {
+                    GameMethods.gameMenu(hero);
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid choice. Please choose again: ");
+                    heroEquipmentMenu(hero);
+                }
             }
-            case 2: {
-                GameMethods.gameMenu(hero);
-            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number: ");
+            scanner.nextLine();
+            heroEquipmentMenu(hero);
         }
     }
-
 }
 
 

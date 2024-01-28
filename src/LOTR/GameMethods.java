@@ -1,20 +1,28 @@
 package LOTR;
 
-import java.io.*;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static LOTR.World.mapMenu;
 
+/**
+ * Contains methods related to playing the game, handling the introduction, and displaying the game menu.
+ */
 public class GameMethods {
 
 
-    public static void playTheGame(){
+    /**
+     * Initiates the gameplay by displaying the introduction, creating the main character, and starting the game menu.
+     */
+    public static void playTheGame() {
         intro();
         Character hero = Character.createHero();
         gameMenu(hero);
     }
 
+
+    /**
+     * Displays the introduction to the game, setting the stage for the player's journey in Middle-earth.
+     */
     public static void intro() {
         Scanner scanner = new Scanner(System.in);
 
@@ -38,81 +46,92 @@ public class GameMethods {
         scanner.nextLine();
     }
 
-    public static void endOfTheGameAndReturnToMainMenu(){
+    /**
+     * Displays the "GAME OVER" message and indicates the end of the game.
+     * Typically used to signal the conclusion of the player's journey.
+     */
+    public static void endOfTheGameAndReturnToMainMenu() {
         System.out.println("GAME OVER");
-
-        //TODO rozbudowac i napisac cale menu
+        System.exit(0);
     }
 
-    //Menu początkowe na starcie gry (ma być inne menu w trakcie gry)
-    public static void startMenu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("MENU GŁÓWNE" + "\n" +
-                "[1] Wczytaj grę(Nie działa)" + "\n" +
-                "[2] Nowa gra" + "\n" +
-                "[3] Wyjdź");
-        int choice = -1;
-        try {
 
-            choice = sc.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Nie poprawny wybór");
-            startMenu();
-        }
-        sc.nextLine();
-        switch (choice) {
-            case 1:
-//                try {
-//                    Memory.loadGame();
-//                } catch (IOException | ClassNotFoundException e) {
-//                    System.out.println("Brak zapisów");
-//                    startMenu();
-//                }
-                startMenu();
-            case 2:
-//                try {
-//                    Memory.createNewGame();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-                playTheGame();
+//
+//    public static void startMenu() {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("MENU GŁÓWNE" + "\n" +
+//                "[1] Wczytaj grę(Nie działa)" + "\n" +
+//                "[2] Nowa gra" + "\n" +
+//                "[3] Wyjdź");
+//        int choice = -1;
+//        try {
+//
+//            choice = sc.nextInt();
+//        } catch (InputMismatchException e) {
+//            System.out.println("Nie poprawny wybór");
+//            startMenu();
+//        }
+//        sc.nextLine();
+//        switch (choice) {
+//            case 1:
+////                try {
+////                    Memory.loadGame();
+////                } catch (IOException | ClassNotFoundException e) {
+////                    System.out.println("Brak zapisów");
+////                    startMenu();
+////                }
+//                startMenu();
+//            case 2:
+////                try {
+////                    Memory.createNewGame();
+////                } catch (IOException e) {
+////                    throw new RuntimeException(e);
+////                }
+//                playTheGame();
+//
+//
+//            case 3:
+//                System.out.println("Logging out...");
+//                System.exit(0);
+//                break;
+//            default:
+//                System.out.println("Nie poprawny wybór");
+//                startMenu();
+//        }
+//    }
 
-
-            case 3:
-                System.out.println("Logging out...");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Nie poprawny wybór");
-                startMenu();
-        }
-    }
-
+    /**
+     * Displays the main game menu, allowing the player to choose actions such as exploring the map,
+     * managing equipment, checking statistics and leveling, saving (non-functional), or exiting the game.
+     *
+     * @param hero The main character of the game.
+     */
     public static void gameMenu(Character hero) {
         Character.barStats(hero);
         Scanner sc = new Scanner(System.in);
-        System.out.println("WYBIERZ DZIAŁANIE: ");
-        System.out.println("[1] MAPA" + "\n" +
-                "[2] EKWIPUNEK" + "\n" +
-                "[3] STATYSTYKI I LEVELOWANIE" + "\n" +
-                "[4] ZAPISZ" + "\n" +
-                "[5] WYJDŹ" + "\n");
+        System.out.println("CHOOSE YOUR ACTION: ");
+        System.out.println("[1] MAP" + "\n" +
+                "[2] EQUIPMENT" + "\n" +
+                "[3] STATISTICS AND LEVELING" + "\n" +
+                "[4] SAVE (NOT WORKING)" + "\n" +
+                "[5] EXIT" + "\n");
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
                 mapMenu(hero);
                 gameMenu(hero);
+                break;
             case 2:
                 Equipment.heroEquipmentMenu(hero);
                 gameMenu(hero);
+                break;
             case 3:
                 Character.levelUpMenu(hero);
                 gameMenu(hero);
                 break;
             case 5:
                 break;
-            default:
-                gameMenu(hero);
         }
     }
+
 }

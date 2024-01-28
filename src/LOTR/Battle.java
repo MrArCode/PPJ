@@ -4,11 +4,28 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * The Battle class represents the battle system in the game, including
+ * interactions between the hero and monsters.
+ */
 public class Battle {
 
+    /**
+     * The number of sides on the dice used for attacks.
+     */
     private static final int DICE_SIDES = 101;
+
+    /**
+     * The size of each display chunk when showing enemy status.
+     */
     private static final int DISPLAY_CHUNK_SIZE = 5;
 
+    /**
+     * Initiates a battle between the hero and a group of monsters.
+     *
+     * @param hero     The main character participating in the battle.
+     * @param monsters An ArrayList of monsters that the hero will face.
+     */
     public static void battle(Character hero, ArrayList<Monster> monsters) {
         displayEnemyStatus(monsters);
 
@@ -23,46 +40,26 @@ public class Battle {
             GameMethods.endOfTheGameAndReturnToMainMenu();
         } else {
             System.out.println("Congratulations! You have defeated all enemies.");
+            System.out.println();
             Character.checkLevelPossibility(hero);
         }
     }
 
-//======================================================================================================================
-    //Rekurencja dla Tymona
-//public static void battle(Character hero, ArrayList<Monster> monsters) {
-//    displayEnemyStatus(monsters);
-//
-//    battleRound(hero, monsters);
-//}
-//
-//    private static void battleRound(Character hero, ArrayList<Monster> monsters) {
-//        if (monsters.isEmpty() || hero.getHealth() <= 0) {
-//            endBattle(hero);
-//        } else {
-//            int attackedEnemy = chooseEnemyToAttack(monsters);
-//            heroAttack(hero, monsters, attackedEnemy);
-//            monsterAttack(hero, monsters);
-//
-//            battleRound(hero, monsters);
-//        }
-//    }
-//
-//    private static void endBattle(Character hero) {
-//        if (hero.getHealth() <= 0) {
-//            System.out.println("You are dead, not big surprise");
-//        } else {
-//            System.out.println("Congratulations! You have defeated all enemies.");
-//        }
-//    }
-
-//======================================================================================================================
-
-
+    /**
+     * Simulates rolling a dice with a specified number of sides.
+     *
+     * @return The result of the dice roll.
+     */
     public static int throwTheDice() {
         Random random = new Random();
         return random.nextInt(DICE_SIDES);
     }
 
+    /**
+     * Displays the status of the enemies in chunks, including their names and positions.
+     *
+     * @param monsters An ArrayList of monsters to display.
+     */
     private static void displayEnemyStatus(ArrayList<Monster> monsters) {
         System.out.print("You are facing " + monsters.size() + " " +
                 (monsters.size() == 1 ? "enemy." : "enemies.") + "\n");
@@ -75,22 +72,42 @@ public class Battle {
         }
     }
 
+    /**
+     * Allows the hero to choose an enemy to attack.
+     *
+     * @param monsters An ArrayList of monsters to choose from.
+     * @return The index of the chosen enemy in the ArrayList.
+     */
     private static int chooseEnemyToAttack(ArrayList<Monster> monsters) {
         Scanner scanner = new Scanner(System.in);
         int attackedEnemy;
 
-        do {
-            System.out.println("Choose the enemy you want to attack: ");
-            attackedEnemy = Integer.parseInt(scanner.nextLine());
+        while (true) {
+            try {
+                System.out.println("Choose the enemy you want to attack: ");
+                attackedEnemy = Integer.parseInt(scanner.nextLine());
 
-            if (attackedEnemy <= 0 || attackedEnemy > monsters.size()) {
-                System.out.println("Please enter a valid number.");
+                if (attackedEnemy <= 0 || attackedEnemy > monsters.size()) {
+                    System.out.println("Please enter a valid number: ");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number: ");
             }
-        } while (attackedEnemy <= 0 || attackedEnemy > monsters.size());
+        }
 
         return attackedEnemy - 1;
     }
 
+
+    /**
+     * Handles the hero's attack on a selected enemy.
+     *
+     * @param hero          The main character performing the attack.
+     * @param monsters      An ArrayList of monsters being attacked.
+     * @param attackedEnemy The index of the enemy being attacked.
+     */
     private static void heroAttack(Character hero, ArrayList<Monster> monsters, int attackedEnemy) {
         Scanner scanner = new Scanner(System.in);
 
@@ -106,7 +123,7 @@ public class Battle {
             if (monsters.get(attackedEnemy).getHealth() <= 0) {
                 System.out.println("You killed " + monsters.get(attackedEnemy).getName());
 
-                //Tu moga byc problemy
+                // Potential issues may arise here
                 Character.gainExperience(hero, monsters.get(attackedEnemy));
                 monsters.remove(attackedEnemy);
             }
@@ -119,6 +136,12 @@ public class Battle {
         }
     }
 
+    /**
+     * Simulates a monster's attack on the hero during battle.
+     *
+     * @param hero     The main character being attacked.
+     * @param monsters An ArrayList of monsters performing the attacks.
+     */
     private static void monsterAttack(Character hero, ArrayList<Monster> monsters) {
         for (Monster monster : monsters) {
             if (throwTheDice() <= monster.getWeaponSkill()) {

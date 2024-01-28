@@ -2,30 +2,53 @@ package LOTR;
 
 import java.util.Scanner;
 
+/**
+ * The World class represents the game world in Middle-Earth and provides methods for navigating the map.
+ */
 public class World {
 
-
+    /**
+     * Displays the map menu and allows the player to choose a location to travel to.
+     *
+     * @param hero The player's character.
+     */
     public static void mapMenu(Character hero) {
         Scanner scanner = new Scanner(System.in);
 
         showMap();
         System.out.println("This is Middle-Earth, where would you like to travel?");
         System.out.println("" +
-                "1.Mordor" +
-                "\n2.Erebor" +
-                "\n3.Minas Tirith" +
-                "\n4.Rohan" +
-                "\n5.Isengard" +
-                "\n6.Fangorn Forest" +
-                "\n7.Lothlorien" +
-                "\n8.Rivendell" +
-                "\n9.Shire" +
-                "\n10.Return to main menu" +
+                "1. Mordor" +
+                "\n2. Erebor" +
+                "\n3. Minas Tirith" +
+                "\n4. Rohan" +
+                "\n5. Isengard" +
+                "\n6. Fangorn Forest" +
+                "\n7. Lothlorien" +
+                "\n8. Rivendell" +
+                "\n9. Shire" +
+                "\n10. Return to the main menu" +
                 "\nType a number: ");
-        int choice = scanner.nextInt();
+
+        int choice = -1;
+
+        while (true) {
+            try {
+                choice = scanner.nextInt();
+                if (choice >= 1 && choice <= 10) {
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please enter a number between 1 and 10:");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number:");
+                scanner.nextLine();
+            }
+        }
+
         switch (choice) {
             case 1 -> {
-                Location.locationAction(Location.LocationFactory.crateMordor(), hero);
+                Location.locationAction(Location.LocationFactory.createMordor(), hero);
             }
             case 2 -> {
                 Location.locationAction(Location.LocationFactory.createErebor(), hero);
@@ -55,10 +78,12 @@ public class World {
                 GameMethods.gameMenu(hero);
                 break;
             }
-
         }
     }
 
+    /**
+     * Displays the Middle-Earth map.
+     */
     public static void showMap() {
         System.out.println("""
                 =====================================================================================================\s
